@@ -1,0 +1,21 @@
+#!/bin/bash
+
+DIR=$(pwd)
+[ $(basename $DIR) == 'bin' ] && echo "Don't run in bin" && exit -1  
+
+IMAGE="web5_14"
+[ "$(docker images | grep "$IMAGE")" == "" ] && docker build -t $IMAGE .
+
+if [ "$1" == "" ] ; then
+  # --name https://docs.docker.com/engine/reference/run/#name-name
+  # -p https://docs.docker.com/engine/reference/run/#expose-incoming-ports
+  docker run --rm -itP --name tickets_web --user=1000:1000 -p 3000:3000 -v $DIR:/app $IMAGE
+else
+  # --rm https://docs.docker.com/engine/reference/run/#clean-up-rm
+  # -it https://docs.docker.com/engine/reference/run/#foreground
+  # -P https://docs.docker.com/engine/reference/run/#expose-incoming-ports
+  # --user=1000:1000 https://docs.docker.com/engine/reference/run/#user
+  # --volume=$DIR:/app https://docs.docker.com/engine/reference/run/#volume-shared-filesystems
+  docker run --rm -it -P --user=1000:1000 --volume=$DIR:/app $IMAGE $1
+fi
+
