@@ -28,5 +28,11 @@
   <%= @person.bio %>
 </p>
 
+<% @phones.each do |phone| %>
+      <tr>
+        <td><%= phone.number %></td>
+         </tr>
+    <% end %>
+
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

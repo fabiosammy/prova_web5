@@ -1,0 +1,20 @@
+<h1>People::Phones#show</h1>
+<p>Find me in app/views/people/phones/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Number</strong>
+  <%= @phone.number %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_person_phone_path(@person, @phone) %> |
+<%= link_to 'Back', person_phones_path(@person) %>
+

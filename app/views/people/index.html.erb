@@ -21,7 +21,7 @@
         <td><%= person.username %></td>
         <td><%= person.birthday %></td>
         <td><%= person.bio %></td>
-        <td> <%= link_to 'Show', person, class: 'ui inverted green button', remote: true %></td>
+        <td> <%= link_to 'Show', person, class: 'ui inverted green button' %></td>
         <td><%= link_to 'Edit', edit_person_path(person), class: 'ui inverted yellow button' %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'ui inverted red button' %><td>   </tr>
     <% end %>
