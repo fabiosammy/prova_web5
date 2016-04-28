@@ -1,0 +1,43 @@
+<%= form_for(@person, html:{class: "ui form"}) do |f| %>
+  <% if @person.errors.any? %>
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header"> 
+        
+        <%= pluralize(@person.errors.count, " - Existe erro", " - Existem Erros") %> no seu formulário:</div>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <br>
+<div class="ui container">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %>
+    <%= f.number_field :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %>
+    <%= f.number_field :bio %>
+  </div>
+  <div class="actions ">
+    <%= f.submit %>
+  </div>
+  </div>
+<% end %>
