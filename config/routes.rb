@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :people do
       resources :phones, controller: 'people/phones'
-      resources :friends, controller: 'people/friends'
-    end
+      resources :friends, controller: 'people/friends' do
+        resources :contact, controller: 'people/contacts'
+      end
+  end
   # namespace :people do
   # get 'phones/index'
   # end
