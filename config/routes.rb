@@ -1,4 +1,64 @@
 Rails.application.routes.draw do
+  resources :people do
+      resources :phones, controller: 'people/phones'
+      resources :friends, controller: 'people/friends'
+    end
+  # namespace :people do
+  # get 'phones/index'
+  # end
+  #
+  # namespace :people do
+  # get 'phones/show'
+  # end
+  #
+  # namespace :people do
+  # get 'phones/new'
+  # end
+  #
+  # namespace :people do
+  # get 'phones/create'
+  # end
+  #
+  # namespace :people do
+  # get 'phones/edit'
+  # end
+  #
+  # namespace :people do
+  # get 'phones/update'
+  # end
+  #
+  # namespace :people do
+  # get 'phones/destroy'
+  # end
+  #
+  # namespace :people do
+  # get 'friends/index'
+  # end
+  #
+  # namespace :people do
+  # get 'friends/show'
+  # end
+  #
+  # namespace :people do
+  # get 'friends/new'
+  # end
+  #
+  # namespace :people do
+  # get 'friends/create'
+  # end
+  #
+  # namespace :people do
+  # get 'friends/edit'
+  # end
+  #
+  # namespace :people do
+  # get 'friends/update'
+  # end
+  #
+  # namespace :people do
+  # get 'friends/destroy'
+  # end
+  # resources :people
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
