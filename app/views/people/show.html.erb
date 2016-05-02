@@ -1,29 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="ui two column grid centered">
+  <div class="column">
+    <div class="ui raised segment">
+    <a class="ui yellow right ribbon label">Listing People</a>
+      <div class="column">
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Username</th>
+              <th>Birthday</th>
+              <th>Bio</th>
+            </tr>
+          </thead>
 
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @person.status %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @person.username %>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @person.birthday %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @person.bio %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+          <tbody>
+              <tr>
+                <td><%= @person.name %></td>
+                <td><%= @person.status %></td>
+                <td><%= @person.username %></td>
+                <td><%= @person.birthday %></td>
+                <td><%= @person.bio %></td>
+              </tr>
+          </tbody>
+        </table>
+        <div class="ui one column centered grid panel-buttons">
+        <div class="actions ui buttons">
+          <%= link_to 'Back', people_path, :class => "ui button" %>
+          <div class="or"></div>
+          <%= link_to 'Edit', edit_person_path(@person), :class => "ui positive button" %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="ui two column centered grid">
+    <div class="column"></div>
+    <div class="two column centered row">
+      <div class="column">
+        <% if notice.present? %>
+          <div class="ui info message">
+            <i class="close icon"></i>
+            <div class="header">
+              Information!!
+            </div>
+            <%= notice %>
+          </div>
+        <% end %>
+
+      </div>
+      <div class="column"></div>
+    </div>
+  </div>
 
 <%= yield %>
 

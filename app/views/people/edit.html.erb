@@ -1,6 +1,10 @@
-<h1>Editing Person</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+<div class="ui two column grid centered">
+  <div class="column">
+    <div class="ui raised segment">
+    <a class="ui yellow right ribbon label">Edit Person</a>
+      <div class="column">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
