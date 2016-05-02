@@ -1,0 +1,22 @@
+<h1>Phones of <%= @person.name %> </h1>
+<table>
+	<thead>
+		<th>Number</th>
+		<th>Default</th>
+	</thead>
+
+	<tbody>
+		<% @phones.each do |phone| %>
+		<tr>
+			<td><%= phone.number %></td>
+			<td><%= phone.default %></td>
+			<td><%= link_to 'Show', person_phone_path(@person, phone) %></td>
+			<td><%= link_to 'Edit', edit_person_phone_path(@person, phone) %></td>
+			<td><%= link_to 'Destroy', person_phone_path(@person, phone), method: :delete, data: { confirm: 'Tem certeza?' }	%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'New Phone', new_person_phone_path(@person) %> |
+<%= link_to 'Back', person_path(@person) %>

@@ -1,0 +1,24 @@
+<h1>Friends of <%= @person.name %></h1>
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Birthday</th>
+	</thead>
+
+	<tbody>
+		<% @friends.each do |friend| %>
+		<tr>
+			<td><%= friend.name %></td>
+			<td><%= friend.birthday %></td>
+			<td><%= link_to 'Show', person_friend_path(@person, friend) %></td>
+			<td><%= link_to 'Edit', edit_person_friend_path(@person, friend) %></td>
+			<td><%= link_to 'Destroy', person_friend_path(@person, friend), method: :delete, data: { confirm: 'Tem certeza?' }%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'New Friend', new_person_friend_path(@person) %>
+<%= link_to 'Back', person_path(@person) %>
+

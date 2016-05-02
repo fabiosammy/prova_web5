@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @person.status %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @person.username %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @person.birthday %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @person.bio %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Friends', person_friends_path(@person) %> |
+<%= link_to 'Phones', person_phones_path(@person) %> |
+<%= link_to 'Back', people_path %> |

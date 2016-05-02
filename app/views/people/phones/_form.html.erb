@@ -1,0 +1,15 @@
+<%= form_for([@person, @phone], html: {class: "ui form"}) do |f| %>
+	<div class="field">
+		<%= f.label :number %><br>
+		<%= f.text_field :number %>
+	</div>
+
+	<div class="field">
+		<%= f.label :default %>:
+		<%= f.check_box :default %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

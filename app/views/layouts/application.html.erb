@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	
+	<header class="navbar navbar-fixed-top">
+		<nav class="navbar-inner">
+			<div class="ui right aligned container">
+				<%= link_to_unless_current 'Link para pessoas', people_path, class: 'ui primary button' %>
+				<%= link_to_unless_current 'Link para home', root_path, class: 'ui primary button' %>
+				<%= link_to_unless_current 'API Ruby On Rails', 'http://api.rubyonrails.org/v4.2.0/', class: 'ui primary button' %>
+			</div>
+		</nav>
+	</header>
+	<div class="ui container">
+		 <%= yield %>
+	</div>
+	 
 </body>
 </html>
