@@ -1,0 +1,16 @@
+<%= form_for([@friend, @contact], :html => {:class => 'ui form'}) do |f| %>
+
+<div class="field">
+  <%= f.label :type %><br>
+  <%= f.text_field :type %>
+</div>
+<div class="field">
+  <%= f.label :value %><br>
+  <%= f.text_field :value %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+
+<% end %>

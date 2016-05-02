@@ -1,2 +1,25 @@
-<h1>People::Friends#show</h1>
-<p>Find me in app/views/people/friends/show.html.erb</p>
+<div class="ui two column grid centered">
+  <div class="column">
+    <div class="ui raised segment">
+    <a class="ui yellow right ribbon label">Show Friend</a>
+      <div class="column">
+        <%= link_to '<i class="user icon green"></i>'.html_safe, new_person_friend_contact_path(@person, @friend), class: "ui icon button" %>
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Birthday</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <tr>
+                <td><%= @friend.name %></td>
+                <td><%= @friend.birthday %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

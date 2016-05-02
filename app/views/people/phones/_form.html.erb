@@ -1,0 +1,17 @@
+<%= form_for([@person, @phone], :html => {:class => 'ui form'}) do |f| %>
+
+<div class="field">
+  <%= f.label :number %><br>
+  <%= f.text_field :number %>
+</div>
+<div class="field">
+  <%= f.label :default %><br>
+  <%= f.radio_button :default, 'true', :checked => true %>Sim
+  <%= f.radio_button :default, 'false' %>Nao
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+
+<% end %>

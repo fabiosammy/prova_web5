@@ -10,6 +10,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    #@phone = @person.phones.find(params[:id])
   end
 
   # GET /people/new

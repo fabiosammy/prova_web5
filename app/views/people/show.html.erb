@@ -3,6 +3,8 @@
     <div class="ui raised segment">
     <a class="ui yellow right ribbon label">Listing People</a>
       <div class="column">
+        <%= link_to '<i class="phone icon green"></i>'.html_safe, new_person_phone_path(@person), class: "ui icon button" %>
+        <%= link_to '<i class="users icon green"></i>'.html_safe, new_person_friend_path(@person), class: "ui icon button" %>
         <table class="ui celled table">
           <thead>
             <tr>
@@ -21,6 +23,7 @@
                 <td><%= @person.username %></td>
                 <td><%= @person.birthday %></td>
                 <td><%= @person.bio %></td>
+
               </tr>
           </tbody>
         </table>
