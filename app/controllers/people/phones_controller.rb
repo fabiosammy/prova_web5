@@ -1,5 +1,6 @@
 class People::PhonesController < ApplicationController
-  before_action :set_phone, only: [:edit, :update]
+  before_action :falsify_all_others, :set_phone, only: [:edit, :update]
+
   def index
     @person = Person.find(params[:person_id])
     @phones = @person.phones.all
@@ -51,6 +52,10 @@ class People::PhonesController < ApplicationController
     end
 
   def phone_params
-    params.require(:phone).permit(:number)
+    params.require(:phone).permit(:number, :default)
+  end
+
+  def falsify_all_others
+  Phone.update_all default: true
   end
 end

@@ -1,73 +1,16 @@
 Rails.application.routes.draw do
   
- 
-  namespace :people do
-  get 'phones/index'
-  end
-
-  namespace :people do
-  get 'phones/show'
-  end
-
-  namespace :people do
-  get 'phones/new'
-  end
-
-  namespace :people do
-  get 'phones/create'
-  end
-
-  namespace :people do
-  get 'phones/edit'
-  end
-
-  namespace :people do
-  get 'phones/update'
-  end
-
-  namespace :people do
-  get 'phones/destroy'
-  end
-
-  namespace :people do
-  get 'phones/index'
-  end
-
-  namespace :people do
-  get 'phones/show'
-  end
-
-  namespace :people do
-  get 'phones/new'
-  end
-
-  namespace :people do
-  get 'phones/create'
-  end
-
-  namespace :people do
-  get 'phones/edit'
-  end
-
-  namespace :people do
-  get 'phones/update'
-  end
-
-  namespace :people do
-  get 'phones/destroy'
-  end
-
    resources :people do
       resources :phones, controller: 'people/phones'
   end
 
   resources :people do
-      resources :friend, controller: 'people/friend'
+      resources :friends, controller: 'people/friends'
   end
 
   resources :people do
-    resources :friend do
-      resources :contact, controller: 'people/friend/contact'
+    resources :friends do
+      resources :contacts, controller: 'people/friends/contacts'
     end
   end
 

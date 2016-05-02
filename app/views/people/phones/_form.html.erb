@@ -1,8 +1,13 @@
 <%= form_for([@person, @phone ]) do |f| %>
 
 <div class="field">
+	<h4>Deseja Marcar Esse Número Como Padrão ? </h4>
+	<%= f.check_box :default %>
+</div>
+
+<div class="field">
 	<%= f.label :number %><br>
-	<%= f.text_field :number %><br>
+	<%= f.text_field :number, :id => "number", :placeholder => "Primary Phone"%>
 </div>
 
 <div class="actions">

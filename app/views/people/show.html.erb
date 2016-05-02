@@ -2,15 +2,14 @@
 
 
 <p id="notice" class= "ui image label" ><%= notice %></p>
-
+<p>
+   <div class="image_status">
+    <%= image_tag "#{@person.status}.png" %>
+  </div>
+</p>
 <p>
   <strong>Name:</strong>
   <%= @person.name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @person.status %>
 </p>
 
 <p>
