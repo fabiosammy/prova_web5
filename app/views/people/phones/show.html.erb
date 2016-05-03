@@ -1,19 +1,24 @@
-<h1>People::Phones#show</h1>
-<p>Find me in app/views/people/phones/show.html.erb</p>
+<%= javascript_include_tag "application", "jquery.maskedinput" %>
+
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name</strong>
-  <%= @person.name %>
-</p>
-
-<p>
-  <strong>Number</strong>
-  <%= @phone.number %>
-</p>
-
-
+<table class="ui celled padded table">
+  <thead>
+    <tr>
+      <th class="single line"> Nome</th>
+      <th> Number</th>
+	</tr>
+	<tr>
+		<td>
+			 <%= @person.name %>
+		</td>
+		<td>
+			 <%= @phone.number %>
+		</td>
+	</tr>
+</table>
+	
 
 <%= link_to 'Edit', edit_person_phone_path(@person, @phone) %> |
 <%= link_to 'Back', person_phones_path(@person) %>

@@ -1,17 +1,39 @@
-<%= form_for([@person, @phone ]) do |f| %>
 
-<div class="field">
-	<h4>Deseja Marcar Esse Número Como Padrão ? </h4>
-	<%= f.check_box :default %>
-</div>
+<%= form_for([@person, @phone ], html:{class: "ui form"}) do |f| %>
+ <% if @phone.errors.any? %>
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header"> 
+        
+        <%= pluralize(@phone.errors.count, " - Existe erro", " - Existem Erros") %> no seu formulário:</div>
 
-<div class="field">
-	<%= f.label :number %><br>
-	<%= f.text_field :number, :id => "number", :placeholder => "Primary Phone"%>
-</div>
+      <ul>
+      <% @phone.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div class="actions">
+<div class="ui container">
+  <table class="ui celled padded table">
+    <thead>
+    <tr>
+      <th class="single line"> Número</th>
+	  </tr>
+	  <tr>
+		<td>
+			<%= f.text_field :number, :id => "number" %> 
+		</td>
+  </table>
+	   <%= f.label :default %> Deseja Marcar Esse Número Como Padrão ?
+   	 <%= f.select :default, options_for_select([["Sim", "true"], ["Não", "false"]]) %>
+
+      
+  <div class="actions ui green inverted button">
 	<%= f.submit %>
+  </div>
 </div>
-	
+
 <% end %>
+</div>

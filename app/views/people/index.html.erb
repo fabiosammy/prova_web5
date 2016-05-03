@@ -1,27 +1,34 @@
 <p id="notice"><%= notice %></p>
 <div class="ui container">
-
-
-<div class="ui top attached button">Listing People
-<%= link_to 'New Person', new_person_path do %><%= image_tag:"busy.png", 'ui small right floated image' %>
-<%= end %>
+<div class="ui top attached ">
+<h2 class="ui center aligned icon header">
+  <i class="circular users icon"></i>
+  Pessoas
+</h2>
+<%= link_to new_person_path do %>
+  <h1><i class="plus icon"></i> Adicionar Pessoa</h1>
+<% end %>
 </div>
 
-<table class="ui celled table">
+<table class="ui celled table striped">
   <thead>
     <tr>
+      <th>Status</th>
       <th>Name</th>
       <th>Username</th>
       <th>Birthday</th>
       <th>Bio</th>
       <th colspan="3">Options</th>
-      <th>Status</th>
+      
     </tr>
   </thead>
 
   <tbody>
     <% @people.each do |person| %>
       <tr id="people_<%=person.id%>">
+        <td class="ui middle aligned tiny image">
+          <%= image_tag "#{person.status}.png" %>
+        </td>
         <td><%= person.name %></td>
         <td><%= person.username %></td>
         <td><%= person.birthday %></td>
@@ -30,9 +37,7 @@
         <td><%= link_to 'Edit', edit_person_path(person), class: 'ui yellow button' %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
 
-        <td class="ui middle aligned tiny image">
-      <%= image_tag "#{person.status}.png" %>
-    </td></tr>
+        </tr>
     <% end %>
   </tbody>
 </table>

@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
 	has_many :phones
+	has_many :friends
 
 	validates_presence_of :name, message: "-> Não Pode Ser Vazio"
 	# validates_uniqueness_of :username, :case_sensitive => true, message: "Não deve conter Letras Maiusculas"

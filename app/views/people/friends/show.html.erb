@@ -1,0 +1,25 @@
+<div class="ui container">
+
+<p id="notice"><%= notice %></p>
+
+<table class="ui celled padded table">
+  <thead>
+    <tr>
+      <th class="single line"> Nome</th>
+      <th> Birthday</th>
+	</tr>
+	<tr>
+		<td>
+			 <%= @friend.name %>
+		</td>
+		<td>
+			 <%= @friend.birthday %>
+		</td>
+	</tr>
+</table>
+	
+
+<%= link_to 'Edit', edit_person_friend_path(@person, @friend) %> |
+<%= link_to 'Back', person_friends_path(@person) %>
+
+</div>

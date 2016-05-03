@@ -1,1 +1,41 @@
-ooi
+<p id="notice"><%= notice %></p>
+
+<div class="ui container">
+  
+  <div class="ui top attached ">
+    <h2 class="ui center aligned icon header">
+      <i class="circular text telephone icon"></i>
+      Listando Os Amigos de <%= @person.name %>
+    </h2>
+    <%= link_to new_person_friend_path do %>
+      <h3><i class="plus icon"></i> Adicionar Novo Amigo</h3>
+    <% end %>
+  </div>
+
+<table class="ui celled table striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Data de Aniversário</th>
+      <th colspan="3">Opções</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td><%= friend.name %></td>
+         <td><%= friend.birthday %></td>
+        
+        <td><%= link_to 'Show', person_friend_path(@person, friend), class: 'ui green button' %></td>
+        <td><%= link_to 'Edit', edit_person_friend_path(@person, friend), class: 'ui yellow button' %></td>
+        <td><%= link_to 'Destroy', person_friend_path(@person, friend) ,class: 'ui red button', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Voltar', person_path(@person.id) %>
+

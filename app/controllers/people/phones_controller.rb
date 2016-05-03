@@ -1,5 +1,5 @@
 class People::PhonesController < ApplicationController
-  before_action :falsify_all_others, :set_phone, only: [:edit, :update]
+  before_action :set_phone, only: [:edit, :update]
 
   def index
     @person = Person.find(params[:person_id])
@@ -19,8 +19,21 @@ class People::PhonesController < ApplicationController
   def create
     @person = Person.find(params[:person_id])
     @phone = @person.phones.new(phone_params)
-    @phone.save
-    redirect_to person_phone_path(@person, @phone)
+
+    
+  
+    respond_to do |format|
+      if @phone.save
+        format.html { redirect_to person_phones_path, notice: 'Phone was successfully created.' }
+        format.json { render :show, status: :created, location: @phone }
+        if (@phone.default)
+          @person.phones.where.not(:id => @phone).update_all(:default => false)
+        end
+      else
+        format.html { render :new }
+        format.json { render json: @person.phones.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -31,6 +44,9 @@ class People::PhonesController < ApplicationController
       if @phone.update(phone_params)
         format.html { redirect_to person_phones_path, notice: 'Person was successfully updated.' }
         format.json { render :show, status: :ok, location: @phone }
+        if (@phone.default)
+          @person.phones.where.not(:id => @phone).update_all(:default => false)
+        end
       else
         format.html { render :edit }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
@@ -55,7 +71,4 @@ class People::PhonesController < ApplicationController
     params.require(:phone).permit(:number, :default)
   end
 
-  def falsify_all_others
-  Phone.update_all default: true
-  end
 end
