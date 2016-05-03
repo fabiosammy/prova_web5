@@ -15,8 +15,18 @@ class People::PhonesController < ApplicationController
 
   def create
     @phone = @person.phones.new(phone_params)
-    @phone.save
-    redirect_to person_phone_path(@person, @phone)
+
+    respond_to do |format|
+      if @phone.save
+        #if (@phone.default) @person.phones.where.not(:id => @phone).update_all(:default => false) end
+        format.html { redirect_to person_phones_path(@person), notice: 'Phone was successfully created.' }
+        format.json { render :no_content }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @phone.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -25,8 +35,10 @@ class People::PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
+        #if (@phone.default) @person.phones.where.not(:id => @phone).update_all(:default => false) end
         format.html { redirect_to person_phones_path(@person), notice: 'Phone was successfully updated.' }
-        format.json { render :show, status: :ok, location: @phone }
+        format.json { render :no_content }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
@@ -36,7 +48,11 @@ class People::PhonesController < ApplicationController
 
   def destroy
     @phone.destroy
-    redirect_to person_phones_path(@person)
+    respond_to do |format|
+      format.html { redirect_to person_phones_path(@person), notice: 'Phone was successfully destroyed.' }
+      format.json { head :no_content }
+      format.js
+    end
   end
 
   private

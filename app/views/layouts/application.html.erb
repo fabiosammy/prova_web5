@@ -7,18 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+	<div class="modal_person ui modal"></div>
+	<div class="modal_phone ui modal"></div>
+	<div class="modal_contact ui modal"></div>
+	<div class="modal_phones ui modal"></div>
+	<div class="modal_friends ui modal"></div>
+
 	
-	<header class="navbar navbar-fixed-top">
-		<nav class="navbar-inner">
-			<div class="ui right aligned container">
-				<%= link_to_unless_current 'Link para pessoas', people_path, class: 'ui primary button' %>
-				<%= link_to_unless_current 'Link para home', root_path, class: 'ui primary button' %>
-				<%= link_to_unless_current 'API Ruby On Rails', 'http://api.rubyonrails.org/v4.2.0/', class: 'ui primary button' %>
-			</div>
-		</nav>
-	</header>
-	<div class="ui container">
-		 <%= yield %>
+	<div class="ui inverted menu">
+		<%= link_to_unless_current 'Home', root_path, class: 'item' %>
+		<%= link_to_unless_current 'Pessoas', people_path, class: 'item' %>
+		<div class="right menu">
+	    <%= link_to_unless_current 'API Ruby On Rails', 'http://api.rubyonrails.org/v4.2.0/', class: 'item' %>
+	  </div>
+	</div>
+
+	
+
+	<div class="ui text container">
+		<%= yield %>
 	</div>
 	 
 </body>

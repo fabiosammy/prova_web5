@@ -1,0 +1,26 @@
+<i class="close icon"></i>
+  <div class="header">
+    Contact of <%= @friend.name %>
+  </div>
+    <div class="content">
+      <p id="notice"><%= notice %></p>
+
+      <table class="ui celled padded table">
+        <tbody>
+          <tr>
+            <td><div class="content">Type:</div></td>
+            <td> <%= @contact.type %></td>
+          </tr>
+          <tr>
+            <td><div class="content">Value</div></td>
+            <td> <%= @contact.value %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  <div class="actions"> 
+    <div class="ui black deny button">
+      Back
+    </div>
+  </div>

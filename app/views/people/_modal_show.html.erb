@@ -1,0 +1,49 @@
+<i class="close icon"></i>
+  <div class="header">
+    Profile <%= @person.name %>
+  </div>
+  <div class="content">
+    <p id="notice"><%= notice %></p>
+
+    <table class="ui celled padded table">
+      <tbody>
+        <tr>
+          <td><div class="content">Name:</div></td>
+          <td> <%= @person.name %></td>
+        </tr>
+        <tr>
+          <td><div class="content">Status:</div></td>
+          <td> <%= @person.status %></td>
+        </tr>
+        <tr>
+          <td><div class="content">Username:</div></td>
+          <td> <%= @person.username %></td>
+        </tr>
+        <tr>
+          <td><div class="content">Birthday:</div></td>
+          <td> <%= @person.birthday %></td>
+        </tr>
+        <tr>
+          <td><div class="content">Bio</div></td>
+          <td> <%= @person.bio %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    
+  <div class="ui labeled icon menu">
+    <%= link_to person_friends_path(@person), class: 'item', remote: true do %>
+      <i class="users icon"></i>
+        Friends
+    <% end %>
+    <%= link_to person_phones_path(@person), class: 'item', remote: true  do %>
+      <i class="call square icon"></i>
+        Phones
+    <% end %>
+  </div>
+
+  <div class="actions"> 
+    <div class="ui black deny button">
+      Back
+    </div>
+  </div>

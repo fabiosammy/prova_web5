@@ -15,8 +15,17 @@ class People::FriendsController < ApplicationController
 
   def create
     @friend = @person.friends.new(friend_params)
-    @friend.save
-    redirect_to person_friend_path(@person, @friend)
+
+    respond_to do |format|
+      if @friend.save
+        format.html { redirect_to person_friends_path(@person), notice: 'Friend was successfully created.' }
+        format.json { head :no_content }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @phone.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -26,7 +35,8 @@ class People::FriendsController < ApplicationController
     respond_to do |format|
       if @friend.update(friend_params)
         format.html { redirect_to person_friends_path(@person), notice: 'Friend was successfully updated.' }
-        format.json { render :show, status: :ok, location: @friend }
+        format.json { head :no_content }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @friend.errors, status: :unprocessable_entity }
@@ -36,7 +46,11 @@ class People::FriendsController < ApplicationController
 
   def destroy
     @friend.destroy
-    redirect_to person_friends_path(@person)
+    respond_to do |format|
+      format.html { redirect_to person_friends_path(@person), notice: 'Friend was successfully destroyed.' }
+      format.json { head :no_content }
+      format.js
+    end
   end
 
   private 

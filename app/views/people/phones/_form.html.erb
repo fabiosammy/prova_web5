@@ -5,11 +5,12 @@
 	</div>
 
 	<div class="field">
-		<%= f.label :default %>:
+		<%= f.label :default %>
 		<%= f.check_box :default %>
 	</div>
 
 	<div class="actions">
-		<%= f.submit %>
+		<%= f.submit class: "ui primary button" %>
+		<%= link_to 'Back', person_phones_path(@person), class: "btn ui inverse button" %>
 	</div>
 <% end %>

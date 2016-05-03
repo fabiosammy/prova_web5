@@ -2,8 +2,7 @@
 
 <h1>Listing Contacts of <%= @friend.name %></h1>
 
-detalhe: <%= @person.name %>
-<table>
+<table class="ui celled table">
   <thead>
     <tr>
       <th>Type</th>
@@ -14,12 +13,12 @@ detalhe: <%= @person.name %>
 
   <tbody>
     <% @contacts.each do |contact| %>
-      <tr>
+      <tr id="contact_<%= contact.id %>">
         <td><%= contact.type %></td>
         <td><%= contact.value %></td>
-        <td><%= link_to 'Show', person_friend_contact_path(@person, @friend, contact) %></td>
-        <td><%= link_to 'Edit', edit_person_friend_contact_path(@person,@friend, contact) %></td>
-        <td><%= link_to 'Destroy', person_friend_contact_path(@person, @friend, contact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', person_friend_contact_path(@person, @friend, contact), remote: true %></td>
+        <td><%= link_to 'Edit', edit_person_friend_contact_path(@person, @friend, contact), remote: true %></td>
+        <td><%= link_to 'Destroy', person_friend_contact_path(@person, @friend, contact), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,5 +26,5 @@ detalhe: <%= @person.name %>
 
 <br>
 
-<%= link_to 'New Contact', new_person_friend_contact_path(@person, @friend) %>
+<%= link_to 'New Contact', new_person_friend_contact_path(@person, @friend), class: 'btn ui primary button' %>
 

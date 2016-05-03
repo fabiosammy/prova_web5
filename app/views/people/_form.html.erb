@@ -32,7 +32,9 @@
     <%= f.text_area :bio %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "ui primary button" %>
+    <%= link_to 'Back', people_path, class: "btn ui inverse button" %>
+
   </div>
 
 <% end %>

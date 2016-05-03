@@ -1,0 +1,26 @@
+<i class="close icon"></i>
+  <div class="header">
+    Phone of <%= @person.name %>
+  </div>
+    <div class="content">
+      <p id="notice"><%= notice %></p>
+
+      <table class="ui celled padded table">
+        <tbody>
+          <tr>
+            <td><div class="content">Number:</div></td>
+            <td> <%= @phone.number %></td>
+          </tr>
+          <tr>
+            <td><div class="content">Default:</div></td>
+            <td> <%= @phone.default %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  <div class="actions"> 
+    <div class="ui black deny button">
+      Back
+    </div>
+  </div>

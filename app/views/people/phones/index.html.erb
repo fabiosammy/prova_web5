@@ -1,22 +1,23 @@
 <h1>Phones of <%= @person.name %> </h1>
-<table>
+<table class="ui celled table">
 	<thead>
 		<th>Number</th>
 		<th>Default</th>
+		<th colspan="3">Actions</th>
 	</thead>
 
 	<tbody>
 		<% @phones.each do |phone| %>
-		<tr>
+		<tr id="phone_<%= phone.id %>">
 			<td><%= phone.number %></td>
 			<td><%= phone.default %></td>
-			<td><%= link_to 'Show', person_phone_path(@person, phone) %></td>
-			<td><%= link_to 'Edit', edit_person_phone_path(@person, phone) %></td>
-			<td><%= link_to 'Destroy', person_phone_path(@person, phone), method: :delete, data: { confirm: 'Tem certeza?' }	%></td>
+			<td><%= link_to 'Show', person_phone_path(@person, phone), remote: true %></td>
+			<td><%= link_to 'Edit', edit_person_phone_path(@person, phone), remote: true %></td>
+			<td><%= link_to 'Destroy', person_phone_path(@person, phone), method: :delete, data: { confirm: 'Tem certeza?' }, remote: true %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<%= link_to 'New Phone', new_person_phone_path(@person) %> |
-<%= link_to 'Back', person_path(@person) %>
+<%= link_to 'New Phone', new_person_phone_path(@person), class: "btn ui primary button", remote: true %> 
+<%= link_to 'Back', people_path, class: "btn ui inverse button" %>

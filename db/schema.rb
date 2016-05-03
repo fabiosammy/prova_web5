@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428160932) do
+ActiveRecord::Schema.define(version: 20160503225839) do
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "type"
+    t.string   "type_contact"
     t.string   "value"
     t.integer  "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "contacts", ["friend_id"], name: "index_contacts_on_friend_id"

@@ -17,8 +17,8 @@
   </div>
  -->
  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.label :type_contact %><br>
+    <%= f.text_field :type_contact %>
   </div>
 
   <div class="field">
@@ -26,6 +26,7 @@
     <%= f.text_field :value %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn ui primary button' %>
+    <%= link_to 'Back', person_friend_contacts_path(@person, @friend), class: 'btn ui default button' %>
   </div>
 <% end %>
