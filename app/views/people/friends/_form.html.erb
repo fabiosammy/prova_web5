@@ -1,0 +1,30 @@
+<%= form_for(@friend,url:action, :html => {:class => "ui form"}) do |f| %>
+  <% if @friend.errors.any? %>
+    <div class="ui red message">
+      <h2><%= pluralize(@friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+      <ul>
+      <% @friend.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %>
+    <%= f.date_select :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :person_id %>
+    <%= f.text_field :person_id %>
+  </div>
+   <div class="actions">
+    <%= f.submit class: 'ui button'  %>
+    <%= link_to 'Cancel', person_friends_path(@person), class: "ui orange button" %>
+  </div>
+
+<% end %>

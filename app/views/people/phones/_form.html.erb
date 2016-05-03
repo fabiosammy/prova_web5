@@ -1,0 +1,33 @@
+<%= form_for(@phone,url:action, :html => {:class => "ui form"}) do |f| %>
+  <% if @phone.errors.any? %>
+    <div class="ui red message">
+      <h4><%= pluralize(@phone.errors.count, "error") %> prohibited this phone from being saved:</h4>
+      <ul>
+      <% @phone.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </div>
+
+  <div class="field">
+    <div class="ui checkbox">
+      <%= f.check_box :default %>
+      <%= f.label :default %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'ui button'  %>
+    <%= link_to 'Cancel', person_phones_path(@person), class: "ui orange button" %>
+  </div>
+
+<% end %>
+
+
+

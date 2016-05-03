@@ -1,0 +1,45 @@
+
+<div class="ui container segment">
+<h1>Show Phone</h1>
+
+ <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+ <% end %>
+
+
+ <table  class="ui celled padded table">
+
+ <thread></thread>
+ <tbody>
+
+
+<tr>
+  <td><strong>Number:</strong></td>
+  <td><%= @phone.number %></td>
+</tr>
+
+<tr>
+  <td><strong>Default:</strong></td>
+ 
+  <td><% if @phone.default %>
+    	true
+	<% else %>
+		false
+	<% end %></td>
+
+</tr>
+
+<tr>
+  <td><strong>Person:</strong></td>
+  <td><%= @phone.person.name %></td>
+</tr>
+
+</tbody>
+</table>
+
+<%= link_to 'Edit', edit_person_phone_path(@person,@phone),class: "ui button" %>
+<%= link_to 'Back', person_phones_path(@person),class: "ui button orange" %>
+
+
+<%= @mm %>
+  

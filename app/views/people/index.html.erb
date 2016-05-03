@@ -1,0 +1,55 @@
+<div class="ui container segment">
+<h1>Listing Person</h1>
+
+  <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+  <% end %>
+
+
+ <table  class="ui celled padded table">
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="center aligned">Status</th>
+      <th>Username</th>
+      <th>birthday</th>
+      <th class="center aligned">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.name %></td>
+        
+        <td class="center aligned">
+
+        <% if person.status == 'online' %>
+          <i class="user green icon"></i>
+        <% elsif person.status == 'busy'  %>
+          <i class="wait orange icon"></i>
+        <% elsif person.status == 'offline' %>
+          <i class="power grey icon"></i>
+        <% elsif person.status == 'hide'%>
+         <i class="spy grey icon"></i>
+        <% end %>
+        </td>
+
+
+        <td><%= person.username %></td>
+        <td><%= person.birthday %></td>
+        <td class="center aligned"><%= link_to 'Show', person_path(person.id) %>|
+        <%= link_to 'Edit', edit_person_path(person.id) %>|
+        <%= link_to 'Destroy', person_path(person.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'New Person', new_person_path, class: "ui button" %>
+
+
+</div>

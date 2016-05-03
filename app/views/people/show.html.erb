@@ -1,0 +1,110 @@
+<div class="ui container segment">
+<h1>Show Person</h1>
+
+  <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+  <% end %>
+
+
+ <table  class="ui celled padded table">
+
+ <thread></thread>
+ <tbody>
+
+ <tr>
+  <td><strong>Name</strong></td>
+  <td><%= @person.name %></td>
+</tr>
+
+<tr>
+  <td><strong>Status</strong></td>
+  <td>
+
+   <% if @person.status == 'online' %>
+          <i class="user green icon"></i>
+        <% elsif @person.status == 'busy'  %>
+          <i class="wait orange icon"></i>
+        <% elsif @person.status == 'offline' %>
+          <i class="power grey icon"></i>
+        <% elsif @person.status == 'hide'%>
+         <i class="spy grey icon"></i>
+        <% end %>
+  </td>
+</tr>
+
+<tr>
+  <td><strong>Username</strong></td>
+  <td><%= @person.username %></td>
+</tr>
+
+<tr>
+  <td><strong>Birthday</strong></td>
+  <td><%= @person.birthday %></td>
+</tr>
+
+<tr>
+  <td><strong>Bio</strong></td>
+  <td><%= @person.bio %></td>
+</tr>
+
+<tr>
+  <td><strong>Phones</strong></td>
+  <td>
+  <table class="table-phone ui table">
+    <thead>
+      <th>Number</th>
+      <th class="center aligned">Default</th>
+      <th class="center aligned">Action</th>    
+      </thead>
+      <tbody></tbody>
+    </table>
+  <%= link_to 'Access', person_phones_path(@person), class: "ui blue button" %> 
+  </td>  
+</tr>
+
+
+<tr>
+  <td><strong>Friends</strong></td>
+  <td> <%= link_to 'Access', person_friends_path(@person), class: "ui blue button" %> </td>
+</tr>
+
+
+</tbody>
+
+
+<script>
+$( document ).ready(function() {
+  $.ajax({
+    url: "<%= person_phones_path(@person) %>.json",
+    method: "GET",
+    type: "json",
+    success: function (data) {
+      //alert(JSON.stringify(data));
+      $(data).each(function (index,data){
+        $("<tr></tr>").append(
+            $("<td></td>").text(data.number)
+          ).append(
+            $("<td></td>").html(data.default?"<i class=\"large green checkmark icon\"></i>":"-")
+          ).addClass("center aligned")
+          .append(
+            $("<td></td>").append(
+              $("<a></a>")
+              .attr("href",data.url.replace(".json",""))
+              .text("Show")
+            ).addClass("center aligned")
+          )
+        .appendTo($('.table-phone > tbody'));
+      });
+    }
+  })
+});
+</script> 
+
+
+</table>
+
+<%= link_to 'Edit', edit_person_path(@person), class: "ui button" %> 
+<%= link_to 'Back', people_path, class: "ui button green" %>
+
+
+</div>

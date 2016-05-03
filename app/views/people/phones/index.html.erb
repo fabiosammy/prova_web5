@@ -1,0 +1,55 @@
+
+<div class="ui container segment">
+  <h2 class="ui header">Listing Phones</h2>
+
+  <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+  <% end %>
+
+  <table  class="ui celled padded table">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th class="center aligned">Default</th>
+      <th class="center aligned">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @phones.each do |phone| %>
+      <tr>
+        <td><%= phone.number %></td>
+        <td class="center aligned">
+
+        
+        <% if phone.default %>
+          <i class="large green checkmark icon"></i>
+        <% else %>
+          -
+        <% end %>
+
+      </td>
+
+       <td class="center aligned">
+
+        <%= link_to 'Show', person_phone_path(@person,phone) %> | 
+        <%= link_to 'Edit', edit_person_phone_path(@person, phone) %> |
+        <%= link_to 'Destroy', person_phone_path(@person,phone), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Phone', new_person_phone_path, class: 'ui button' %>
+<%= link_to 'Back', people_path, class: 'ui orange button' %>
+</div>
+
+
+
+
+
+
+
+
