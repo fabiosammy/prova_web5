@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Phone_1:
+  number: "+55(999) 22288-7777"
+  default: true
+  person_id: 1
+
+two:
+  number: "+55(999) 22255-7777"
+  default: false
+  person_id: 

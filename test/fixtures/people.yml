@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Person_1:
+  id: 1
+  name: MyString
+  status: MyString
+  username: MyString
+  birthday: 2016-05-02
+  bio: MyText
+
+two:
+  name: MyString
+  status: MyString
+  username: MyString
+  birthday: 2016-05-02
+  bio: MyText

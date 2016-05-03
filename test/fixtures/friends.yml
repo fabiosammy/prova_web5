@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Frind_1:
+  id: 1
+  name: MyString
+  birthday: 2016-05-02
+  person_id: 1 
+
+two:
+  name: MyString
+  birthday: 2016-05-02
+  person_id: 
