@@ -1,37 +1,47 @@
 
 
 
-<p id="notice" class= "ui image label" ><%= notice %></p>
+<!-- <p id="notice" class= "ui image label" ><%= notice %></p> -->
 <p>
-   <div class="image_status">
-    <%= image_tag "#{@person.status}.png" %>
+   <div class="ui small right floated image">
+    <div class="ui mini spaced image">
+      <%= image_tag "#{@person.status}.png" %>
+    </div>
   </div>
+   
 </p>
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @person.username %>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @person.birthday %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @person.bio %>
-</p>
-
-<% @phones.each do |phone| %>
+<div class="ui container">
+  <div class="field">
+<table class="ui celled padded table">
+  <thead>
+    <tr><th class="single line">Name</th>
+    <th>Username</th>
+    <th>Birthday</th>
+    <th>Biografia</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>
+        <h2 class="ui center aligned header"><%= @person.name %></h2>
+      </td>
+      <td class="single line">
+        <%= @person.username %>
+      </td>
+      <td>
+        <div class="ui star rating" data-rating="3" data-max-rating="3"> <%= @person.birthday %></div>
+      </td>
+      <td><%= @person.bio %></td>
+    </tr>
+    <% @phones.each do |phone| %>
       <tr>
         <td><%= phone.number %></td>
          </tr>
     <% end %>
+  </tbody>
+</table>
+</div>
+
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
+</div>
