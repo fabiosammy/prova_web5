@@ -1,0 +1,40 @@
+<div class="ui container segment">
+<h1>Listing Contacts</h1>
+
+  <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+  <% end %>
+
+
+ <table  class="ui celled padded table">
+
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Friend</th>
+      <th class="center aligned">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.type_ %></td>
+        <td><%= contact.value %></td>
+        <td><%= contact.friend.name %></td>
+
+        <td class="center aligned"><%= link_to 'Show', person_friend_contact_path(@person,@friend,contact.id) %>|
+        <%= link_to 'Edit', edit_person_friend_contact_path(@person,@friend,contact.id) %>|
+        <%= link_to 'Destroy', person_friend_contact_path(@person,@friend,contact.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Friend', new_person_friend_contact_path(@person,@friend), class: "button ui" %>
+<%= link_to 'Back', person_friends_path(@person), class: "ui orange button" %>
+
+</div>

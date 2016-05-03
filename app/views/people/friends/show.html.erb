@@ -1,0 +1,77 @@
+<div class="ui container segment">
+<h1>Show Friend</h1>
+
+ <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+ <% end %>
+
+
+ <table  class="ui celled padded table">
+
+ <thread></thread>
+ <tbody>
+
+<tr>
+  <td><strong>Name</strong></td>
+  <td><%= @friend.name %></td>
+</tr>
+
+<tr>
+  <td><strong>Birthday</strong></td>
+  <td><%= @friend.birthday %></td>
+</tr>
+
+<tr>
+  <td><strong>Person</strong></td>
+  <td><%= @friend.person.name %></td>
+</tr>
+
+<tr>
+<td><strong>Conctact</strong></td>
+<td>
+<table class="contact_table ui celled padded table">
+  <thead>
+    <th>Type</th>
+    <th>Value</th>
+    <th class="center aligned">Actions</th>    
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+  <%= link_to 'Access', person_friend_contacts_path(@person,@friend), class: "ui blue button" %> 
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_person_friend_path(@person,@friend),class: "ui button" %> 
+<%= link_to 'Back', people_path,class: "ui button orange" %>
+
+<script>
+$( document ).ready(function() {
+  $.ajax({
+    url: "<%= person_friend_contacts_path(@person,@friend) %>.json",
+    method: "GET",
+    type: "json",
+    success: function (data) {
+      $(data).each(function (index,data){
+        $("<tr></tr>").append(
+            $("<td></td>").text(data.type_)
+          ).append(
+            $("<td></td>").text(data.value)
+          ).append(
+            $("<td></td>")
+            .addClass("center aligned")
+            .append(
+              $("<a></a>")
+              .attr("href",data.url.replace(".json",""))
+              .text("Show")
+            )
+          )
+        .appendTo($('.contact_table > tbody'));
+      });
+    }
+  })
+});
+</script>
