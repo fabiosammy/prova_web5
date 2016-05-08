@@ -1,19 +1,17 @@
-<%= javascript_include_tag "application", "jquery.maskedinput" %>
-
-<!-- <p id="notice" class= "ui image label" ><%= notice %></p> -->
-<br>
 <h2 class="ui center aligned icon header">
   <i class="circular user icon"></i>
   Pessoa
 </h2>
-<p>
-   <div class="ui small right floated image">
-    <div class="ui mini spaced image">
-      <h5>Status</h5> <%= image_tag "#{@person.status}.png" %>
-    </div>
+
+<%= javascript_include_tag 'application', 'contact' => true %>
+
+<div class="ui small right floated image">
+  <div class="ui mini spaced image">
+    <h5>Status</h5> <%= image_tag "#{@person.status}.png" %>
   </div>
+</div>
    
-</p>
+
 <div class="ui container">
   <div class="field">
 <table class="ui celled padded table">
@@ -47,7 +45,7 @@
           <div class="item">
           <div class="content">
             <div id="seuSelect">
-              <option value=""></option>
+              
             </div>
           </div>
           </div>
@@ -63,3 +61,4 @@
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
 </div>
+

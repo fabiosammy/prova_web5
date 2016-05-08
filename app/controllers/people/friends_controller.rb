@@ -36,7 +36,7 @@ class People::FriendsController < ApplicationController
   def update
     respond_to do |format|
       if @friend.update(friend_params)
-        format.html { redirect_to person_friends_path, notice: 'Person was successfully updated.' }
+        format.html { redirect_to person_friends_path, notice: 'Friend was successfully updated.' }
         format.json { render :show, status: :ok, location: @friend }
       else
         format.html { render :edit }
@@ -48,8 +48,13 @@ class People::FriendsController < ApplicationController
   def destroy
      @person = Person.find(params[:person_id])
      @friend = @person.friends.find(params[:id])
-     @friend.destroy
-     redirect_to person_friends_path(@person)
+     
+    respond_to do |format|
+      if @friend.destroy
+        format.html { redirect_to person_phones_path, notice: 'Friend was dropped.' }
+        format.json { render :show, status: :ok, location: @friend }
+      end
+    end
   end
 
   private

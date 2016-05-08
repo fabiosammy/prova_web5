@@ -42,7 +42,7 @@ class People::PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
-        format.html { redirect_to person_phones_path, notice: 'Person was successfully updated.' }
+        format.html { redirect_to person_phones_path, notice: 'Phone was successfully updated.' }
         format.json { render :show, status: :ok, location: @phone }
         if (@phone.default)
           @person.phones.where.not(:id => @phone).update_all(:default => false)
@@ -55,10 +55,16 @@ class People::PhonesController < ApplicationController
   end
 
   def destroy
+     
      @person = Person.find(params[:person_id])
      @phone = @person.phones.find(params[:id])
-     @phone.destroy
-     redirect_to person_phones_path(@person)
+     
+     respond_to do |format|
+      if @phone.destroy
+        format.html { redirect_to person_phones_path, notice: 'Phone was dropped.' }
+        format.json { render :show, status: :ok, location: @phone }
+      end
+     end
   end
 
   private

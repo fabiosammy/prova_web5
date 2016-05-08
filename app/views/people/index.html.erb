@@ -1,5 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %> 
+  <p id="notice"></p>
+<%= flash[:notice] %> </div> <% end %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 <div class="ui container">
+  <br>
 <div class="ui top attached ">
 <h2 class="ui center aligned icon header">
   <i class="circular users icon"></i>
@@ -26,7 +31,7 @@
   <tbody>
     <% @people.each do |person| %>
       <tr id="people_<%=person.id%>">
-        <td class="ui middle aligned tiny image">
+        <td class="ui aligned mini image">
           <%= image_tag "#{person.status}.png" %>
         </td>
         <td><%= person.name %></td>

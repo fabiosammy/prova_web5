@@ -1,29 +1,51 @@
 require 'test_helper'
 
 class PeopleControllerTest < ActionController::TestCase
-  test "should get name:string" do
-    get :name:string
+  setup do
+    @person = people(:one)
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:people)
+  end
+
+  test "should get new" do
+    get :new
     assert_response :success
   end
 
-  test "should get status:string" do
-    get :status:string
+  test "should create person" do
+    assert_difference('Person.count') do
+      post :create, person: { name: @person.name, username: @person.username, status: @person.status,
+                              birthday: @person.birthday, bio: @person.bio }
+    end
+
+    assert_redirected_to person_path(assigns(:person))
+  end
+
+  test "should show person" do
+    get :show, id: @person
     assert_response :success
   end
 
-  test "should get username:string" do
-    get :username:string
+  test "should get edit" do
+    get :edit, id: @person
     assert_response :success
   end
 
-  test "should get birthday:date" do
-    get :birthday:date
-    assert_response :success
+  test "should update person" do
+    patch :update, id: @person, person: { name: @person.name, username: @person.username, status: @person.status,
+                                          birthday: @person.birthday, bio: @person.bio }
+    assert_redirected_to person_path(assigns(:person))
   end
 
-  test "should get bio:text" do
-    get :bio:text
-    assert_response :success
-  end
+  test "should destroy person" do
+    assert_difference('Person.count', -1) do
+      delete :destroy, id: @person
+    end
 
+    assert_redirected_to people_path
+  end
 end

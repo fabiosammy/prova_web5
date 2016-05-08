@@ -1,12 +1,21 @@
+
 <div class="ui container">
 
 <p id="notice"><%= notice %></p>
+
+<div class="ui top attached ">
+    <h2 class="ui center aligned icon header">
+      <i class="circular text user icon"></i>
+      Amigo
+    </h2>
+</div>
 
 <table class="ui celled padded table">
   <thead>
     <tr>
       <th class="single line"> Nome</th>
       <th> Birthday</th>
+      <th> Lista de Amigos</th>
 	</tr>
 	<tr>
 		<td>
@@ -15,11 +24,23 @@
 		<td>
 			 <%= @friend.birthday %>
 		</td>
+		<td>
+        <div class="ui middle aligned divided list">
+          <div class="item">
+          <div class="content">
+            <div id="listPhone">
+              
+            </div>
+          </div>
+          </div>
+        </div>
+      </td>
 	</tr>
 </table>
-	
+<br>
 
-<%= link_to 'Edit', edit_person_friend_path(@person, @friend) %> |
-<%= link_to 'Back', person_friends_path(@person) %>
+<i class="eye icon"></i><%= link_to 'Ver Contatos', person_friend_contacts_path(@person, @friend) %><br><br>
+
+<%= link_to 'Voltar', person_friends_path(@person) %>
 
 </div>

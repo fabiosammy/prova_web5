@@ -1,12 +1,12 @@
+<%= javascript_include_tag "application", "jquery.maskedinput" => true %>
 
 <%= form_for([@person, @phone ], html:{class: "ui form"}) do |f| %>
  <% if @phone.errors.any? %>
     <div class="ui negative message">
       <i class="close icon"></i>
       <div class="header"> 
-        
         <%= pluralize(@phone.errors.count, " - Existe erro", " - Existem Erros") %> no seu formulário:</div>
-
+      
       <ul>
       <% @phone.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -14,6 +14,13 @@
       </ul>
     </div>
   <% end %>
+
+<div class="ui top attached ">
+  <h2 class="ui center aligned icon header">
+    <i class="circular text telephone icon"></i>
+      Cadastro de Telefones
+  </h2>  
+</div>
 
 <div class="ui container">
   <table class="ui celled padded table">
@@ -28,9 +35,9 @@
   </table>
 	   <%= f.label :default %> Deseja Marcar Esse Número Como Padrão ?
    	 <%= f.select :default, options_for_select([["Sim", "true"], ["Não", "false"]]) %>
-
+<br>
       
-  <div class="actions ui green inverted button">
+  <div class="ui white button">
 	<%= f.submit %>
   </div>
 </div>

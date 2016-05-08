@@ -1,10 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %> 
+  <p id="notice"></p>
+<%= flash[:notice] %> </div> <% end %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <div class="ui container">
-  
+  <br>
   <div class="ui top attached ">
     <h2 class="ui center aligned icon header">
-      <i class="circular text telephone icon"></i>
+      <i class="circular text list icon"></i>
       Listando Os Contatos de <%= @friend.name %>
     </h2>
     <%= link_to new_person_friend_contact_path do %>

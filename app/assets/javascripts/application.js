@@ -23,9 +23,6 @@ jQuery(function($){
    $("#birthday").mask("99/99/9999");
 });
 
-
-
-
 var url = window.location.href.toString().split(window.location.host)[1];
 var localhost = 'http://localhost:3000'; 
 var js  = '/phones.json'
@@ -39,8 +36,9 @@ $.ajax({
   	$.each(response, function(i, k) {
   		
   		// em cada loop de $.each, k será uma
-  		// alert(last);
+  		// alert(json);
   		$("#seuSelect").append(new Option(k.number, k.id));
   	});
   }
 });
+

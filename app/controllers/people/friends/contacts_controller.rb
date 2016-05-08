@@ -41,7 +41,7 @@ class People::Friends::ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @friend.update(friend_params)
-        format.html { redirect_to person_friends_path, notice: 'Person was successfully updated.' }
+        format.html { redirect_to person_friends_path, notice: 'contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @friend }
       else
         format.html { render :edit }

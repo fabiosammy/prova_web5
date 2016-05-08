@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %> 
+  <p id="notice"></p>
+<%= flash[:notice] %> </div> <% end %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <div class="ui container">
-  
+    <br>
   <div class="ui top attached ">
     <h2 class="ui center aligned icon header">
       <i class="circular text telephone icon"></i>
       Listando Os Telefones de <%= @person.name %>
     </h2>
     <%= link_to new_person_phone_path do %>
-      <h3><i class="plus icon"></i> Adicionar Novo Telefone</h3>
+    <h3><i class="plus icon"></i> Adicionar Novo Telefone</h3>
     <% end %>
   </div>
 
@@ -26,7 +29,6 @@
       <tr>
         <td><%= phone.number %></td>
          <td><%= phone.default ? "Sim" : "Não" %></td>
-        
         <td><%= link_to 'Show', person_phone_path(@person, phone), class: 'ui green button' %></td>
         <td><%= link_to 'Edit', edit_person_phone_path(@person, phone), class: 'ui yellow button' %></td>
         <td><%= link_to 'Destroy', person_phone_path(@person, phone),class: 'ui red button', method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -39,3 +41,4 @@
 
 <%= link_to 'Voltar', person_path(@person.id) %>
 
+</div>
