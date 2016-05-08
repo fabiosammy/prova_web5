@@ -4,6 +4,11 @@ class People::PhonesController < ApplicationController
 
   def index
     @phones = @person.phones
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @phones}
+    end
   end
 
   def show

@@ -42,6 +42,24 @@
     <% end %>
   </div>
 
+  <div class="content">
+    <h3>Phones</h3>
+    <table class="ui celled table table-phones">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Default</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      
+      </tbody>
+    </table>
+    <%= link_to 'New Phone', new_person_phone_path(@person), class: 'btn ui primary button'%>
+  </div>
+
   <div class="actions"> 
     <div class="ui black deny button">
       Back

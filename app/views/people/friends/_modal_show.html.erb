@@ -1,24 +1,44 @@
 <i class="close icon"></i>
   <div class="header">
-    Phone of <%= @person.name %>
+    Friend of <%= @person.name %>
   </div>
     <div class="content">
       <p id="notice"><%= notice %></p>
 
       <table class="ui celled padded table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>BirthDay</th>
+        </tr>
+      </thead>
         <tbody>
           <tr>
-            <td><div class="content">Name:</div></td>
             <td> <%= @friend.name %></td>
-          </tr>
-          <tr>
-            <td><div class="content">Birthday</div></td>
             <td> <%= @friend.birthday %></td>
           </tr>
         </tbody>
       </table>
     </div>
     
+    <div class="content">
+      <h3>Contacts</h3>
+      <table class="ui celled table table-contacts">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Values</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+      <%= link_to 'New Contact', new_person_friend_contact_path(@person, @friend), class: 'btn ui primary button' %>
+    </div>
+
   <div class="actions"> 
      <%= link_to 'Contacts', person_friend_contacts_path(@person, @friend), class: 'btn ui primary button', remote: true %>
     <div class="ui black deny button">

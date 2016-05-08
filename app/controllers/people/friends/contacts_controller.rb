@@ -5,6 +5,11 @@ class People::Friends::ContactsController < ApplicationController
 
   def index
     @contacts = @friend.contacts
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @contacts}
+    end
   end
 
   def show
@@ -70,6 +75,6 @@ class People::Friends::ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:value)
+      params.require(:contact).permit(:value, :type_contact)
     end
 end
