@@ -1,22 +1,25 @@
 class People::FriendsController < ApplicationController
-  before_action :set_friend, only: [:edit, :update]
+  before_action :set_person
+  before_action :set_friend, only: [:edit, :update, :show, :destroy]
+  
   def index
-    @person = Person.find(params[:person_id])
     @friends = @person.friends.all
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @contacts}
+  end
   end
 
   def show
-    @person = Person.find(params[:person_id])
-    @friend = @person.friends.find(params[:id])
+
   end
 
   def new
-    @person = Person.find(params[:person_id])
     @friend = @person.friends.new
   end
 
   def create
-    @person = Person.find(params[:person_id])
     @friend = @person.friends.new(friend_params)
   
     respond_to do |format|
@@ -46,7 +49,6 @@ class People::FriendsController < ApplicationController
   end
 
   def destroy
-     @person = Person.find(params[:person_id])
      @friend = @person.friends.find(params[:id])
      
     respond_to do |format|
@@ -61,8 +63,12 @@ class People::FriendsController < ApplicationController
   def set_friend
       @person = Person.find(params[:person_id])
       @friend = @person.friends.find(params[:id])
-    end
+  end
 
+  def set_person
+    @person = Person.find(params[:person_id])
+  end
+  
   def friend_params
     params.require(:friend).permit(:name, :birthday)
   end

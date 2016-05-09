@@ -15,13 +15,6 @@
     </div>
   <% end %>
 
-<div class="ui top attached ">
-  <h2 class="ui center aligned icon header">
-    <i class="circular text telephone icon"></i>
-      Cadastro de Telefones
-  </h2>  
-</div>
-
 <div class="ui container">
   <table class="ui celled padded table">
     <thead>
@@ -37,9 +30,7 @@
    	 <%= f.select :default, options_for_select([["Sim", "true"], ["Não", "false"]]) %>
 <br>
       
-  <div class="ui white button">
-	<%= f.submit %>
-  </div>
+<%= f.submit class: 'btn ui left attached teal button' %> <%= link_to 'Back', person_phones_path, class: 'btn ui right attached red button' %>
 </div>
 
 <% end %>

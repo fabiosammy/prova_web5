@@ -58,7 +58,7 @@
 </div>
 <i class="phone icon"></i><%= link_to 'Ver Todos Telefones', person_phones_path(@person) %><br><br>
 <i class="users icon"></i><%= link_to 'Ver Todos os Amigos', person_friends_path(@person) %><br><br>
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'Edit', edit_person_path(@person), class: 'btn ui left attached yellow button' %> 
+<%= link_to 'Back', people_path, class: 'btn ui left attached black button' %>
 </div>
 

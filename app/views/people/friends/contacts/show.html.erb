@@ -1,0 +1,31 @@
+<div class="ui container">
+
+<p id="notice"><%= notice %></p>
+
+<div class="ui top attached ">
+    <h2 class="ui center aligned icon header">
+      <i class="circular text list icon"></i>
+      Contato
+    </h2>
+</div>
+
+<table class="ui celled padded table">
+  <thead>
+    <tr>
+      <th class="single line"> Tipo</th>
+      <th> Valor</th>
+	</tr>
+	<tr>
+		<td>
+			 <%= @contact.tipo %>
+		</td>
+		<td>
+			 <%= @contact.valor%>
+		</td>
+	</tr>
+</table>
+<br>
+
+<%= link_to 'Voltar', person_friend_contacts_path(@person, @friend), class: 'btn ui black button' %>
+
+</div>

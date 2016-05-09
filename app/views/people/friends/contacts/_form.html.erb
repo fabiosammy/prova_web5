@@ -24,7 +24,7 @@
 	</tr>
 	<tr>
 		<td>
-			<%= f.text_field :tipo %> 
+			<%= f.select :tipo, [['Email', 'email'], ['Phone', 'phone'], ['Address', 'address']] %>
       <option value="Email"></option>
 		</td>
   </tr>
@@ -43,9 +43,7 @@
 
 </table>
       
-<div class="actions ui green inverted button">
-	<%= f.submit %>
-</div>
+  <%= f.submit class: 'btn ui left attached teal button' %> <%= link_to 'Back', person_friend_contacts_path, class: 'btn ui right attached red button' %>
 	
 <% end %>
 </div>

@@ -16,13 +16,18 @@
 
 
 .field_with_errors{
-        background: none repeat scroll 0% 0% gray;
+        background: none repeat scroll 0% 0% red;
         color: #000000;  
         box-shadow: none;
         margin-bottom: 10px;
         width: 1000px;
 }
+.data{
+    float: left;
+    width: 100px;
+    marginright: 5px;
 
+}
 .image_status{
 	width: 10px;
 }

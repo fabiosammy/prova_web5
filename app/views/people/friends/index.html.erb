@@ -2,7 +2,6 @@
   <p id="notice"></p>
 <%= flash[:notice] %> </div> <% end %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <div class="ui container">
   <br>
@@ -11,7 +10,7 @@
       <i class="circular text users icon"></i>
       Listando Os Amigos de <%= @person.name %>
     </h2>
-    <%= link_to new_person_friend_path do %>
+    <%= link_to new_person_friend_path, class: 'ui btn teal button'  do %>
       <h3><i class="plus icon"></i> Adicionar Novo Amigo</h3>
     <% end %>
   </div>
@@ -30,8 +29,9 @@
       <tr>
         <td><%= friend.name %></td>
          <td><%= friend.birthday %></td>
-        
-        <td><%= link_to 'Show', person_friend_path(@person, friend), class: 'ui green button' %></td>
+         <td>
+          <%= link_to 'Show', person_friend_path(@person, friend), class: 'ui green button'%>
+         </td>
         <td><%= link_to 'Edit', edit_person_friend_path(@person, friend), class: 'ui yellow button' %></td>
         <td><%= link_to 'Destroy', person_friend_path(@person, friend) ,class: 'ui red button', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -40,5 +40,6 @@
 </table>
 
 <br>
-<%= link_to 'Voltar', person_path(@person.id) %>
+<%= link_to 'Voltar', person_path(@person.id), class: 'ui btn black button'  %>
+
 

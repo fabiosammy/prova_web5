@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require semantic-ui
 //= require_tree 
+
+
 jQuery(function($){
     $("#number").mask("(+55) 99999-9999");
 });

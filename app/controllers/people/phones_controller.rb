@@ -1,27 +1,22 @@
 class People::PhonesController < ApplicationController
-  before_action :set_phone, only: [:edit, :update]
+  before_action :set_person
+  before_action :set_phone, only: [:edit, :update, :destroy, :update]
 
   def index
-    @person = Person.find(params[:person_id])
     @phones = @person.phones.all
   end
 
   def show
-    @person = Person.find(params[:person_id])
-    @phone = @person.phones.find(params[:id])
+    
   end
 
   def new
-    @person = Person.find(params[:person_id])
     @phone = @person.phones.new
   end
 
   def create
-    @person = Person.find(params[:person_id])
     @phone = @person.phones.new(phone_params)
 
-    
-  
     respond_to do |format|
       if @phone.save
         format.html { redirect_to person_phones_path, notice: 'Phone was successfully created.' }
@@ -55,10 +50,6 @@ class People::PhonesController < ApplicationController
   end
 
   def destroy
-     
-     @person = Person.find(params[:person_id])
-     @phone = @person.phones.find(params[:id])
-     
      respond_to do |format|
       if @phone.destroy
         format.html { redirect_to person_phones_path, notice: 'Phone was dropped.' }
@@ -69,9 +60,12 @@ class People::PhonesController < ApplicationController
 
   private
   def set_phone
-      @person = Person.find(params[:person_id])
-      @phone = @person.phones.find(params[:id])
-    end
+    @phone = @person.phones.find(params[:id])
+  end
+  
+  def set_person
+    @person = Person.find(params[:person_id])
+  end
 
   def phone_params
     params.require(:phone).permit(:number, :default)

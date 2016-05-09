@@ -1,4 +1,30 @@
+<script type="text/javascript" href="show.js.erb">
+jQuery.getJSON("<%= person_friend_contacts_path(@person, @friend) %>", function(data) {
+    // aqui o json já carregou e pode ser acessado como "dados"
 
+    // var items = [];
+    // $.each(data, function(key, val) {
+    //   items.push('<tr><td id="type_' + val['id'] + '">' + val['tipo'] + 
+    //     '</td><td id="value_' + val['id'] + '">' + val['value'] + '</td>'+
+    //     '<td><%= link_to "Edit", edit_person_phone_path(@person, 17), remote: true %></td>'+
+    //     '<td><%= link_to "Delete", person_phone_path(@person,'parseInt(17)'), method: :delete, data: { confirm: "Are you sure?" }, remote: true %></td></tr>');
+    // });
+    $.each(data, function(i, k) {
+
+      // em cada loop de $.each, k será uma
+      // alert(json);
+      $("#contatos").append(new Option(k.valor, k.id));
+    });
+
+         
+
+    // $('<tbody/>', {
+    //   'class': 'table-contacts',
+    //   html: items.join('')
+    // }).appendTo('.table-contacts');
+  
+});
+</script>
 <div class="ui container">
 
 <p id="notice"><%= notice %></p>
@@ -14,8 +40,8 @@
   <thead>
     <tr>
       <th class="single line"> Nome</th>
-      <th> Birthday</th>
-      <th> Lista de Amigos</th>
+      <th> Data de Aniversário</th>
+      <th> Lista de Contatos</th>
 	</tr>
 	<tr>
 		<td>
@@ -28,7 +54,7 @@
         <div class="ui middle aligned divided list">
           <div class="item">
           <div class="content">
-            <div id="listPhone">
+            <div id="contatos">
               
             </div>
           </div>
@@ -41,6 +67,6 @@
 
 <i class="eye icon"></i><%= link_to 'Ver Contatos', person_friend_contacts_path(@person, @friend) %><br><br>
 
-<%= link_to 'Voltar', person_friends_path(@person) %>
+<%= link_to 'Voltar', person_friends_path(@person), class: 'btn ui black button' %>
 
 </div>

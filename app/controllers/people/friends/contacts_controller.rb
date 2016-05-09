@@ -1,27 +1,26 @@
 class People::Friends::ContactsController < ApplicationController
-  before_action :set_friend, only: [:edit, :update]
+  before_action :set_person
+  before_action :set_friend
+  before_action :set_contact, only: [:edit, :update, :show, :destroy]
   
   def index
-    @person = Person.find(params[:person_id])
-    @friend = Friend.find(params[:friend_id])
     @contacts = @friend.contacts.all
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @contacts}
+    end
   end
 
   def show
-    @person = Person.find(params[:person_id])
-    @friend = Friend.find(params[:friend_id])
     @contact = @friend.contacts.find(params[:id])
   end
 
   def new
-    @person = Person.find(params[:person_id])
-    @friend = Friend.find(params[:friend_id])
     @contact = @friend.contacts.new
   end
 
   def create
-    @person = Person.find(params[:person_id])
-    @friend = Friend.find(params[:friend_id])
     @contact = @friend.contacts.new(contact_params)
   
     respond_to do |format|
@@ -51,22 +50,25 @@ class People::Friends::ContactsController < ApplicationController
   end
 
   def destroy
-     @person = Person.find(params[:person_id])
-     @friend = @person.friends.find(params[:id])
      @friend.destroy
      redirect_to person_friends_path(@person)
   end
 
-  private
-  def set_contact
-      @person = Person.find(params[:person_id])
+private  
+  def set_friend
       @friend = Friend.find(params[:friend_id])
+  end
+  
+  def set_person
+      @person = Person.find(params[:person_id])  
+  end
+
+  def set_contact
       @contact = @friend.contacts.find(params[:id])
-    end
+  end
 
   def contact_params
     params.require(:contact).permit(:tipo, :valor)
   end
-
 
 end

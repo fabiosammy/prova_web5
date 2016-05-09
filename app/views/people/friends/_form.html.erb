@@ -1,3 +1,4 @@
+
 <%= form_for([@person, @friend ], html:{class: "ui form"}) do |f| %>
  <% if @friend.errors.any? %>
     <div class="ui negative message">
@@ -42,9 +43,7 @@
 
 </table>
       
-<div class="actions ui green inverted button">
-	<%= f.submit %>
-</div>
+  <%= f.submit class: 'btn ui left attached teal button' %> <%= link_to 'Back', person_friends_path, class: 'btn ui right attached red button' %>
 	
 <% end %>
 </div>

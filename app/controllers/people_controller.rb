@@ -12,10 +12,11 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find(params[:id])
     @phones = @person.phones.all
+    
     respond_to do |format|
-    format.html
-    format.json
-  end
+      format.html
+      format.json
+    end
   end
 
   # GET /people/new
