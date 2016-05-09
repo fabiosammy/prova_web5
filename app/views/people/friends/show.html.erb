@@ -1,9 +1,14 @@
+<script>
+  loadContacts();
+</script>
+
 <div class="ui two column grid centered">
   <div class="column">
     <div class="ui raised segment">
     <a class="ui yellow right ribbon label">Show Friend</a>
       <div class="column">
         <%= link_to '<i class="user icon green"></i>'.html_safe, new_person_friend_contact_path(@person, @friend), class: "ui icon button" %>
+        <%= link_to '<i class="reply icon gray"></i>'.html_safe, person_friends_path(@person), class: "ui icon button" %>
         <table class="ui celled table">
           <thead>
             <tr>
@@ -19,6 +24,10 @@
               </tr>
           </tbody>
         </table>
+        <div id="results">
+          <h3>Contacts</h3>
+          <%= link_to '<i class="configure icon green"></i>'.html_safe, person_friend_contacts_path(@person, @friend), class: "ui icon button" %>
+        </div>
       </div>
     </div>
   </div>

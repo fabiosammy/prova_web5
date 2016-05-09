@@ -28,7 +28,7 @@ class People::PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
-        format.html { redirect_to person_phone_path, notice: 'Person was successfully updated.' }
+        format.html { redirect_to person_path(@person), notice: 'Person was successfully updated.' }
         format.json { render :show, status: :ok, location: @phone }
       else
         format.html { render :edit }

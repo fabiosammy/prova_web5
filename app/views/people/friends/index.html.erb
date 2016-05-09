@@ -4,6 +4,7 @@
     <a class="ui yellow right ribbon label">Listing Friends</a>
       <div class="column">
         <%= link_to '<i class="plus icon green"></i>'.html_safe, new_person_friend_path, class: "ui icon button" %>
+        <%= link_to '<i class="reply icon gray"></i>'.html_safe, person_path(@person), class: "ui icon button" %>
         <table class="ui celled table">
           <thead>
             <tr>

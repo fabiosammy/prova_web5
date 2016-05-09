@@ -1,10 +1,13 @@
+<script>
+  loadPhones();
+</script>
 <div class="ui two column grid centered">
   <div class="column">
     <div class="ui raised segment">
     <a class="ui yellow right ribbon label">Listing People</a>
       <div class="column">
         <%= link_to '<i class="phone icon green"></i>'.html_safe, new_person_phone_path(@person), class: "ui icon button" %>
-        <%= link_to '<i class="users icon green"></i>'.html_safe, new_person_friend_path(@person), class: "ui icon button" %>
+        <%= link_to '<i class="users icon green"></i>'.html_safe, person_friends_path(@person), class: "ui icon button" %>
         <table class="ui celled table">
           <thead>
             <tr>
@@ -13,6 +16,7 @@
               <th>Username</th>
               <th>Birthday</th>
               <th>Bio</th>
+              <th>Phone</th>
             </tr>
           </thead>
 
@@ -23,10 +27,14 @@
                 <td><%= @person.username %></td>
                 <td><%= @person.birthday %></td>
                 <td><%= @person.bio %></td>
-
+                <td><%= @phone %></td>
               </tr>
           </tbody>
         </table>
+        <div id="results">
+          <h3>Phones</h3>
+          <%= link_to '<i class="configure icon green"></i>'.html_safe, person_phones_path(@person), class: "ui icon button" %>
+        </div>
         <div class="ui one column centered grid panel-buttons">
         <div class="actions ui buttons">
           <%= link_to 'Back', people_path, :class => "ui button" %>
