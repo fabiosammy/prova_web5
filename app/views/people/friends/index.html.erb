@@ -1,25 +1,36 @@
-<h1>Friends of <%= @person.name %></h1>
+<h1>All Friends of <%= @person.name %></h1>
 
-<table class="ui celled table">
-	<thead>
-		<th>Name</th>
-		<th>Birthday</th>
-        <th colspan="3">Actions</th>
-	</thead>
+<div class="header">
+    All Friends of <%= @person.name %>
+  </div>
+    <div class="content">
+      <p id="notice"><%= notice %></p>
+      <table class="ui celled table">
+        <thead>
+          <th>Name</th>
+          <th>Birthday</th>
+          <th colspan="3">Actions</th>
+        </thead>
 
-	<tbody>
-		<% @friends.each do |friend| %>
-		<tr id="friend_<%= friend.id %>">
-			<td><%= friend.name %></td>
-			<td><%= friend.birthday %></td>
-			<td><%= link_to 'Show', person_friend_path(@person, friend), remote: true %></td>
-			<td><%= link_to 'Edit', edit_person_friend_path(@person, friend), remote: true %></td>
-			<td><%= link_to 'Destroy', person_friend_path(@person, friend), method: :delete, data: { confirm: 'Tem certeza?' }, remote: true %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+        <tbody>
+          <% @friends.each do |friend| %>
+          <tr id="friend_<%= friend.id %>">
+            <td><%= friend.name %></td>
+            <td><%= friend.birthday %></td>
+            <td><%= link_to image_tag('details.png'), person_friend_path(@person, friend), remote: true %></td>
+            <td><%= link_to image_tag('edit.png'), edit_person_friend_path(@person, friend), remote: true %></td>
+            <td><%= link_to image_tag('delete.png'), person_friend_path(@person, friend), method: :delete, data: { confirm: 'Tem certeza?' }, remote: true %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br>
+        
+    <div class="content">
+    	<%= link_to 'New Friend', new_person_friend_path(@person), class: 'btn ui primary button', remote: true %>
+    	<%= link_to 'Back', people_path, class: 'ui black button item' %>
 
-<%= link_to 'New Friend', new_person_friend_path(@person), class: 'btn ui primary button', remote: true %>
-<%= link_to 'Back', people_path, class: 'btn ui inverse button' %>
+    </div>
+    
 

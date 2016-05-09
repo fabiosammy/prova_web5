@@ -13,7 +13,7 @@
         </tr>
         <tr>
           <td><div class="content">Status:</div></td>
-          <td> <%= @person.status %></td>
+          <td> <%= image_tag(''+@person.status+'.png', size: '20x20', alt: ''+@person.status) %></td>
         </tr>
         <tr>
           <td><div class="content">Username:</div></td>
@@ -30,15 +30,15 @@
       </tbody>
     </table>
   </div>
-    
+
   <div class="ui labeled icon menu">
-    <%= link_to person_friends_path(@person), class: 'item', remote: true do %>
-      <i class="users icon"></i>
-        Friends
+    <%= link_to person_friends_path(@person), class: 'item' do %>
+    <i class="users icon"></i>
+      Friends
     <% end %>
-    <%= link_to person_phones_path(@person), class: 'item', remote: true  do %>
+    <%= link_to person_phones_path(@person), class: 'item' do %>
       <i class="call square icon"></i>
-        Phones
+      Phones
     <% end %>
   </div>
 
@@ -49,15 +49,11 @@
         <tr>
           <th>Number</th>
           <th>Default</th>
-          <th colspan="2">Actions</th>
         </tr>
       </thead>
-
-      <tbody>
-      
+      <tbody>      
       </tbody>
     </table>
-    <%= link_to 'New Phone', new_person_phone_path(@person), class: 'btn ui primary button'%>
   </div>
 
   <div class="actions"> 

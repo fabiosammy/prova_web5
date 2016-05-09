@@ -16,7 +16,7 @@
         <tbody>
           <% @contacts.each do |contact| %>
           <tr id="contact_<%= contact.id %>">
-            <td><%= contact.type %></td>
+            <td><%= contact.type_contact %></td>
             <td><%= contact.value %></td>
             <td><%= link_to image_tag('details.png'), person_friend_contact_path(@person, @friend, contact), remote: true %></td>
             <td><%= link_to image_tag('edit.png'), edit_person_friend_contact_path(@person, @friend, contact), remote: true %></td>

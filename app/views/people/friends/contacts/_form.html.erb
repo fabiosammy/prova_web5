@@ -1,8 +1,8 @@
+<%= javascript_include_tag "application", "jquery.maskedinput" => true %>
 <%= form_for([@person, @friend, @contact], html: {class: "ui form"}) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
       <ul>
       <% @contact.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,19 +10,15 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :type_contact %><br>
     <%= f.select :type_contact, [['Email', 'email'], ['Phone', 'phone'], ['Address', 'address']] %>
   </div>
- 
-
   <div class="field">
     <%= f.label :value %><br>
     <%= f.text_field :value %>
   </div>
   <div class="actions">
     <%= f.submit class: 'btn ui primary button' %>
-    <%= link_to 'Back', person_friend_contacts_path(@person, @friend), class: 'btn ui default button' %>
   </div>
 <% end %>

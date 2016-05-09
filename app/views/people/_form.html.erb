@@ -1,7 +1,8 @@
 <%= form_for(@person, html: {class: "ui form"}) do |f| %>
   <% if @person.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+    <div class="ui negative message">
+      <i class="close-icon"></i>
+      <h2>Existe <%= pluralize(@person.errors.count, "erro", "erros") %> no seu formulário:</h2>
 
       <ul>
       <% @person.errors.full_messages.each do |message| %>
@@ -33,8 +34,6 @@
   </div>
   <div class="actions">
     <%= f.submit class: "ui primary button" %>
-    <%= link_to 'Back', people_path, class: "btn ui inverse button" %>
-
   </div>
 
 <% end %>

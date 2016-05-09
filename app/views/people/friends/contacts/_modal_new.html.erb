@@ -2,14 +2,12 @@
   <div class="header">
     Contact of <%= @friend.name %>
   </div>
-    <div class="content">
-      <h2 class="ui dividing header">Create New Contact</h2>
-      <%= render 'form' %>
-    </div>
+  <div class="content">
+    <h2 class="ui dividing header">Create New Contact</h2>
+    <%= render 'form' %>
+  </div>
 
 
   <div class="actions">
-    <div class="ui black deny button">
-      Back
-    </div>
+    <%= link_to 'Back', person_friend_path(@person, @friend), class: 'btn ui black button', remote: true %>
   </div>

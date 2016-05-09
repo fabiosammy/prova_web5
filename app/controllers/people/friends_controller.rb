@@ -24,6 +24,7 @@ class People::FriendsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
+        format.js {render :new}
       end
     end
   end

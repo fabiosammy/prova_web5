@@ -15,7 +15,7 @@ class People::PhonesController < ApplicationController
   end
 
   def new
-    @phone = Phone.new
+    @phone = @person.phones.new
   end
 
   def create
@@ -23,10 +23,12 @@ class People::PhonesController < ApplicationController
 
     respond_to do |format|
       if @phone.save
-        #if (@phone.default) @person.phones.where.not(:id => @phone).update_all(:default => false) end
-        format.html { redirect_to person_phones_path(@person), notice: 'Phone was successfully created.' }
+        format.html { redirect_to people_path, notice: 'Phone was successfully created.' }
         format.json { render :no_content }
-        format.js
+        format.js 
+        if (@phone.default) 
+          @person.phones.where.not(:id => @phone).update_all(:default => false) 
+        end
       else
         format.html { render :new }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
@@ -40,10 +42,12 @@ class People::PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
-        #if (@phone.default) @person.phones.where.not(:id => @phone).update_all(:default => false) end
         format.html { redirect_to person_phones_path(@person), notice: 'Phone was successfully updated.' }
         format.json { render :no_content }
         format.js
+        if (@phone.default) 
+          @person.phones.where.not(:id => @phone).update_all(:default => false) 
+        end
       else
         format.html { render :edit }
         format.json { render json: @phone.errors, status: :unprocessable_entity }

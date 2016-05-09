@@ -20,12 +20,11 @@ class People::Friends::ContactsController < ApplicationController
   end
 
   def create
-    # Tem algum problema ao mandar o parametro type....
     @contact = @friend.contacts.new(contact_params)
     
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to person_friend_contacts_path(@person, @friend) }
+        format.html { redirect_to person_friends_path(@person, @friend) }
         format.json { head :no_content }
         format.js
       else
