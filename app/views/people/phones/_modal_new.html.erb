@@ -1,0 +1,11 @@
+<i class="close icon"></i>
+  <div class="header">
+    Phone <%= @person.name %>
+  </div>
+  <div class="content">
+    <h2 class="ui dividing header">Create New Phone</h2>
+    <%= render 'form' %>
+  </div>
+  <div class="actions">
+      <%= link_to 'Back', person_path(@person), class: 'btn ui black deny button', remote: true %>
+  </div>

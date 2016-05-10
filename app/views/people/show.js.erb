@@ -1,0 +1,20 @@
+
+$('.modal_person').html("<%= j render 'modal_show' %>");
+$('.modal_person').modal('show');
+
+jQuery.getJSON("<%= person_phones_path(@person) %>", function(data) {
+    var items = [];
+
+    $.each(data, function(key, val) {
+      items.push("<tr><td id='number_" + val['id']+ "'>"+val['number']+
+        "</td><td id='default_"+ val['id']+"'>"+val['default']+"</td></tr>");
+    });
+
+    $('<tbody/>', {
+      'class': 'table-phones',
+      html: items.join('')
+    }).appendTo('.table-phones');
+ 
+});
+
+

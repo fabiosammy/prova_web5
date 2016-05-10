@@ -1,0 +1,48 @@
+<i class="close icon"></i>
+  <div class="header">
+    Friend <%= @friend.name %>
+  </div>
+    <div class="content">
+      <p id="notice"><%= notice %></p>
+
+      <table class="ui celled padded table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>BirthDay</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td> <%= @friend.name %></td>
+            <td> <%= @friend.birthday %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="content">
+      <h3>Contacts</h3>
+      <table class="ui celled table table-contacts">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Values</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          
+        </tbody>
+      </table>
+      <%= link_to 'Editar Contatos', person_friend_contacts_path(@person, @friend), class: 'btn ui primary button'%>
+    </div>
+
+    <div class="actions">
+      <div class="ui black deny button">
+        Back
+      </div>
+    </div>
+  
+
+

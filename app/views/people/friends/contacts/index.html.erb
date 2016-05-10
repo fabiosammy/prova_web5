@@ -1,0 +1,34 @@
+<div class="header">
+  Contacts of Friend <%= @friend.name %>
+</div>
+<div class="content">
+  <p id="notice"><%= notice %></p>
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Value</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contacts.each do |contact| %>
+      <tr id="contact_<%= contact.id %>">
+        <td><%= contact.type_contact%></td>
+        <td><%= contact.value %></td>
+        <td><%= link_to image_tag('details.png'), person_friend_contact_path(@person, @friend, contact), remote: true %></td>
+        <td><%= link_to image_tag('edit.png'), edit_person_friend_contact_path(@person, @friend, contact), remote: true %></td>
+        <td><%= link_to image_tag('delete.png'), person_friend_contact_path(@person, @friend, contact), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<div class="actions"> 
+  <%= link_to 'New Contact', new_person_friend_contact_path(@person, @friend), class: 'btn ui primary button', remote: true %>
+  <%= link_to 'Back', person_friends_path(@person), class: 'btn ui black button' %>
+</div>
+
+

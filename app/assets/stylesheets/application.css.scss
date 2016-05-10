@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import "semantic-ui";
+
+a:link {text-decoration: none; border: none;} 
+
+.field_with_errors {
+	background: none repeat scroll 0% 0% #FFD1D1;
+	background-color: #FFD1D1;
+	border-color: #DB6464;
+	color: #CE514E;
+	box-shadow: none;
+}

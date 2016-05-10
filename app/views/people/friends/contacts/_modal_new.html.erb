@@ -1,0 +1,13 @@
+<i class="close icon"></i>
+  <div class="header">
+    Contact of <%= @friend.name %>
+  </div>
+  <div class="content">
+    <h2 class="ui dividing header">Create New Contact</h2>
+    <%= render 'form' %>
+  </div>
+
+
+  <div class="actions">
+    <%= link_to 'Back', person_friend_path(@person, @friend), class: 'btn ui black button', remote: true %>
+  </div>

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing People</h1>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Username</th>
+      <th>Birthday</th>
+      <th>Bio</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr id="people_<%= person.id %>">
+        <td><%= person.name %></td>
+        <td><%= image_tag(person.status + '.png', size: '20x20') %></td>
+        <td><%= person.username %></td>
+        <td><%= person.birthday %></td>
+        <td><%= person.bio %></td>
+        <td><%= link_to image_tag('details.png'), person, remote: true %></td>
+        <td><%= link_to image_tag('edit.png'), edit_person_path(person), remote:true %></td>
+        <td><%= link_to image_tag('delete.png'), person, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Person', new_person_path, class: "btn ui primary button"%>
+

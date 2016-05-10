@@ -1,0 +1,39 @@
+<%= form_for(@person, html: {class: "ui form"}) do |f| %>
+  <% if @person.errors.any? %>
+    <div class="ui negative message">
+      <i class="close-icon"></i>
+      <h2>Existe <%= pluralize(@person.errors.count, "erro", "erros") %> no seu formulário:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.select :status, [['Online', 'online'], ['Offline', 'offline'], ['Busy', 'busy'], ['Hide', 'hide']] %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br>
+    <%= f.date_select :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "ui primary button" %>
+  </div>
+
+<% end %>

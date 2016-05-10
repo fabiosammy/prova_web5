@@ -1,0 +1,55 @@
+<div class="ui text container">
+
+	<h1 class="ui header">Prova de Web 5</h1>
+	Descrição:
+
+	<div class="ui bulleted list">
+		<div class="item">Deverá ser criada uma interface utilizando algum framework frontend (ex: bootstrap ou o semantic-ui) Haverá 4 models: "Person", "Phone", "Friend", "Contact" ;</div>
+		<div class="item">Os atributos e relacionamentos estão na imagem (todos com asterisco(*) são obrigatórios no preenchimento do formulário);</div>
+		<div class="item">
+			<div>Validações de Person:</div>
+			<div class="list">
+				<div class="item">status: somente poderá ser: 'online', 'offline', 'busy', 'hide'</div>
+				<div class="item">username: somente caracteres alfa-numéricos, e minuscúlas deverão ser aceitos;</div>
+			</div>
+		</div>
+		<div class="item">
+			<div>Validações de Phone:</div>
+			<div class="list">
+				<div class="item">country_code: deverá ser sempre o valor "+55"</div>
+				<div class="item">number: deverá serguir a mascara : '(999) 99999-9999'</div>
+				<div class="item">default: caso seja verdadeiro, os demais deverão ser alterados para falso dentro do escopo de "person_id". </div>
+				<div class="item">Pelo menos um deles deverá ser verdadeiro dentro do mesmo escopo de "person_id".</div>
+			</div>
+		</div>
+		<div class="item">
+			<div>Validações para Contact:</div>
+			<div class="list">
+				<div class="item">type: somente poderá ser: 'email', 'phone', 'address'</div>
+			</div>
+		</div>
+		<div class="item">A view(rotas) de "Phone" deverá ser aninhada a "Person" (Exemplo de rota: '/people/1/phones/2');</div>
+		<div class="item">A view(rotas) de "Friend" deverá ser aninhada a "Person" (Exemplo de rota: '/people/1/friends/3')
+		</div>
+		<div class="item">A view(rotas) de "Contact" deverá ser aninhada a "Friend" (Exemplo de rota: '/people/1/friends/3/contacts/4')
+		</div>
+		<div class="item">A view de "Person" deverá ter uma listagem que represente visualmente com o uso de imagens/icones o 'status' de uma person</div>
+		<div class="item">Deverá ser criar uma pagina de unificação de phones em show person, carregando as informações via json
+		</div>
+		<div class="item">Deverá ser criar uma pagina de unificação de contacts em show friend, carregando as informações via json
+		</div>
+		<div class="item">Deverá existir todos os testes funcionais para os formatos html e json, e todos devem passar.
+		</div>
+	</div>
+
+	Tópicos de avaliação:
+	<div class="ui bulleted list">
+		<div class="item">Qualidade de código;</div>
+		<div class="item">Estilo visual(CSS);</div>
+		<div class="item">Tópicos realizados da descrição da prova;
+		</div>
+		<div class="item">Coerência de commits do github;</div>
+		<div class="item">Cobertura dos testes;</div>
+	</div>
+	<p></p>
+</div>

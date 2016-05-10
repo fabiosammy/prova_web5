@@ -1,0 +1,28 @@
+<%= javascript_include_tag "application", "jquery.maskedinput" => true %>
+<%= form_for([@person, @phone], html: {class: "ui form"}) do |f| %>
+	<% if @phone.errors.any? %>
+    <div class="ui negative message">
+      <i class="close-icon"></i>
+      <h2>Existe <%= pluralize(@phone.errors.count, "erro", "erros") %> no seu formulário:</h2>
+      <ul>
+      <% @phone.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+		<%= f.label :number %><br>
+		<%= f.text_field :number, :id => "number" %>
+	</div>
+
+	<div class="field">
+		<%= f.label :default %>
+		<%= f.check_box :default %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit class: "ui primary button" %>
+	</div>
+<% end %>
