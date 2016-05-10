@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Contact_1:
+  id: '1'
+  type_: 'address'
+  value: 'rua professora leonidia'
+  friend_id: id
+
+two:
+  type_: 'email'
+  value: 'test@gmail.com'
+  friend_id:
