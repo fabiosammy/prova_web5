@@ -1,0 +1,30 @@
+<div class="ui container segment">
+  <a class="ui green left ribbon label"><h3>Show <%= @phone.person.name %> Phone <%= @phone.id %> </h1></a>
+
+  <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+  <% end %>
+
+  <table  class="ui celled padded table">
+    <tbody>
+      <tr>
+        <td><strong>Number:</strong></td>
+        <td><%= @phone.number %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Default:</strong></td>
+
+        <td>
+          <% if @phone.default %>
+        	   <i class="large green checkmark icon"></i>
+          <% else %>
+        	   <i class="large red remove icon"></i>
+          <% end %>
+        </td>
+      </tr>
+</tbody>
+</table>
+
+<%= link_to 'Edit', edit_person_phone_path(@person,@phone),class: "ui button" %>
+<%= link_to 'Back', person_phones_path(@person),class: "ui button" %>

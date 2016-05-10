@@ -1,0 +1,61 @@
+<div class="ui container segment">
+<a class="ui green left ribbon label"><h3>Show Person <%= @person.id %></h3></a>
+  <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+  <% end %>
+
+  <table class="ui celled padded table">
+    <tbody>
+      <tr>
+        <td><strong>Name</strong></th>
+        <td><%= @person.name %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Status</strong></th>
+        <td>
+          <% if @person.status == 'online' %>
+            <i class="toggle on green icon"></i>
+          <% elsif @person.status == 'busy'  %>
+            <i class="wait blue icon"></i>
+          <% elsif @person.status == 'offline' %>
+            <i class="toggle off red icon"></i>
+          <% elsif @person.status == 'hide'%>
+           <i class="spy yellow icon"></i>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr>
+        <td><strong>Username</strong></th>
+        <td><%= @person.username %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Birthday</strong></td>
+        <td><%= @person.birthday %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Bio</strong></td>
+        <td><%= @person.bio %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Phones</strong></td>
+        <td>
+          <%= link_to 'Telefones', person_phones_path(@person) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td><strong>Friends</strong></td>
+        <td> <%= link_to 'Amigos', person_friends_path(@person) %> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to 'Edit', edit_person_path(@person), class: "ui blue button" %>
+  <%= link_to 'Back', people_path, class: "ui button" %>
+
+</div>

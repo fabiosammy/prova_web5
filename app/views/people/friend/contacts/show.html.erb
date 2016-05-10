@@ -1,0 +1,36 @@
+<div class="ui container segment">
+<a class="ui green left ribbon label"><h3>Show Contact</h3></a>
+  <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+  <% end %>
+
+
+ <table  class="ui celled padded table">
+
+ <thread></thread>
+ <tbody>
+
+ <tr>
+
+<td><strong>Type:</strong></td>
+<td><%= @contact.type_ %></td>
+</p>
+</tr>
+
+<tr>
+<p>
+ <td><strong>Value:</strong></td>
+ <td><%= @contact.value %></td>
+</p>
+</tr>
+<tr>
+<p>
+ <td><strong>Friend:</strong></td>
+ <td><%= @contact.friend.name %></td>
+</p>
+</tr>
+</tbody>
+</table>
+<%= link_to 'Edit', edit_person_friend_contact_path(@person,@friend,@contact),class: "ui button" %>
+<%= link_to 'Back', person_friend_contacts_path(@person,@friend),class: "ui button" %>
+</div>

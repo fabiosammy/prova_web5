@@ -1,0 +1,35 @@
+<div class="ui container segment">
+<a class="ui green left ribbon label"><h3>Show Friend</h3></a>
+
+ <% if notice %>
+    <div class="ui blue message"><i class="warning circle icon"></i><%= notice %></div>
+ <% end %>
+
+ <table  class="ui celled padded table">
+   <tbody>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><%= @friend.name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Birthday</strong></td>
+      <td><%= @friend.birthday %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Person</strong></td>
+      <td><%= @friend.person.name %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Conctact</strong></td>
+      <td>
+        <%= link_to 'Contatos', person_friend_contacts_path(@person,@friend) %>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+  <%= link_to 'Edit', edit_person_friend_path(@person,@friend),class: "ui blue button" %>
+  <%= link_to 'Back', people_path,class: "ui button" %>
