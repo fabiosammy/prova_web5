@@ -14,6 +14,11 @@
  *= require_self
  */
 
+.rodape{
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
 
 .field_with_errors{
         background: none repeat scroll 0% 0% red;
@@ -36,7 +41,7 @@
 	background: repeat scroll 100% 100% #F5F5F5;
     width:100%;
     heigth:100%;
-    position: absolute;
+    position: relative;
     overflor: hidden;
 }
 

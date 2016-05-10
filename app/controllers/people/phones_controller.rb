@@ -1,6 +1,6 @@
 class People::PhonesController < ApplicationController
   before_action :set_person
-  before_action :set_phone, only: [:edit, :update, :destroy, :update]
+  before_action :set_phone, only: [:edit, :update, :destroy, :update, :show]
 
   def index
     @phones = @person.phones.all

@@ -1,4 +1,4 @@
-<%= javascript_include_tag "application", "jquery.maskedinput" => true %>
+<%= javascript_include_tag 'application', 'jquery.maskedinput' => true %>
 
 <%= form_for([@person, @phone ], html:{class: "ui form"}) do |f| %>
  <% if @phone.errors.any? %>

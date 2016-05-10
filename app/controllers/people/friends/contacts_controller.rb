@@ -26,7 +26,7 @@ class People::Friends::ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         format.html { redirect_to person_friend_contacts_path, notice: 'Contacts was successfully created.' }
-        format.json { render :show, status: :created, location: @friend }
+        format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
         format.json { render json: @friend.contacts.errors, status: :unprocessable_entity }
@@ -39,19 +39,24 @@ class People::Friends::ContactsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @friend.update(friend_params)
-        format.html { redirect_to person_friends_path, notice: 'contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @friend }
+      if @contact.update(contact_params)
+        format.html { redirect_to person_friend_contacts_path, notice: 'contact was successfully updated.' }
+        format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :edit }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-     @friend.destroy
-     redirect_to person_friends_path(@person)
+     respond_to do |format|
+      if @contact.destroy
+        format.html { redirect_to person_friend_contacts_path, notice: 'Contact was dropped.' }
+        format.json { render :show, status: :ok, location: @contact }
+        format.js
+      end
+     end
   end
 
 private  

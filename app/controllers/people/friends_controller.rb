@@ -4,11 +4,7 @@ class People::FriendsController < ApplicationController
   
   def index
     @friends = @person.friends.all
-    
-    respond_to do |format|
-      format.html
-      format.json {render json: @contacts}
-  end
+
   end
 
   def show
@@ -48,17 +44,15 @@ class People::FriendsController < ApplicationController
     end
   end
 
-  def destroy
-     @friend = @person.friends.find(params[:id])
-     
-    respond_to do |format|
+  def destroy     
+  respond_to do |format|
       if @friend.destroy
-        format.html { redirect_to person_phones_path, notice: 'Friend was dropped.' }
+        format.html { redirect_to person_friends_path, notice: 'Friend was dropped.' }
         format.json { render :show, status: :ok, location: @friend }
       end
-    end
+     end
   end
-
+ 
   private
   def set_friend
       @person = Person.find(params[:person_id])

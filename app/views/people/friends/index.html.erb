@@ -33,7 +33,8 @@
           <%= link_to 'Show', person_friend_path(@person, friend), class: 'ui green button'%>
          </td>
         <td><%= link_to 'Edit', edit_person_friend_path(@person, friend), class: 'ui yellow button' %></td>
-        <td><%= link_to 'Destroy', person_friend_path(@person, friend) ,class: 'ui red button', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', person_friend_path(@person, friend) ,class: 'ui red button', method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        
       </tr>
     <% end %>
   </tbody>
