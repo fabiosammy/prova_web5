@@ -1,10 +1,10 @@
 <%= form_for([@person, @phone], :html => {:class => 'ui form'}) do |f| %>
 
-<div class="field">
+<div class="field <% if @person.errors[:number].any? %> error <% end %>">
   <%= f.label :number %><br>
   <%= f.text_field :number, :class => "phoneMask" %>
 </div>
-<div class="field">
+<div class="field <% if @person.errors[:default].any? %> error <% end %>">
   <%= f.label :default %><br>
   <%= f.radio_button :default, 'true', :checked => true %>Sim
   <%= f.radio_button :default, 'false' %>Nao

@@ -12,23 +12,23 @@
   </div>
 <% end %>
 <%= form_for(@person, :html => {:class => 'ui form'}) do |f| %>
-  <div class="field">
+  <div class="field <% if @person.errors[:name].any? %> error <% end %>">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="field <% if @person.errors[:status].any? %> error <% end %>">
     <%= f.label :status %><br>
     <%= f.select :status, options_for_select(["online", "offline", "busy", "hide"]) %>
   </div>
-  <div class="field">
+  <div class="field <% if @person.errors[:username].any? %> error <% end %>">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
   </div>
-  <div class="field">
+  <div class="field <% if @person.errors[:birthday].any? %> error <% end %>">
     <%= f.label :birthday %><br>
     <%= f.date_select :birthday %>
   </div>
-  <div class="field">
+  <div class="field <% if @person.errors[:bio].any? %> error <% end %>">
     <%= f.label :bio %><br>
     <%= f.text_area :bio %>
   </div>

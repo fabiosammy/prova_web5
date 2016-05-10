@@ -29,6 +29,15 @@ class People::ContactsController < ApplicationController
     def edit
     end
     def update
+      respond_to do |format|
+        if @contact.update(contact_params)
+          format.html { redirect_to person_friend_path(@person, @friend), notice: 'Person was successfully updated.' }
+          format.json { render :show, status: :ok, location: @contact }
+        else
+          format.html { render :edit }
+          format.json { render json: @contact.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
     private

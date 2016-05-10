@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.mask
 //= require semantic-ui
 //= require turbolinks
 //= require_tree .
