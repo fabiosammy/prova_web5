@@ -23,21 +23,21 @@ class PeopleControllerTest < ActionController::TestCase
     assert_redirected_to person_path(assigns(:person))
   end
 
-#   test "should show person" do
-#     get :show, id: @person
-#     assert_response :success
-#   end
+  test "should show person" do
+    get :show, id: @person
+    assert_response :success
+  end
 
-#   test "should get edit" do
-#     get :edit, id: @person
-#     assert_response :success
-#   end
+  test "should get edit" do
+    get :edit, id: @person, format: :xhr
+    assert_response :success
+  end
 
-#   test "should update person" do
-#     patch :update, id: @person, person: { description: 'Person Changed' }
-#     assert_redirected_to person_path(assigns(:person))
-#     assert_equal 'Person Changed', Person.find(@person.id).description
-#   end
+  test "should update person" do
+    patch :update, id: @person, person: { name: 'Person Changed', status: 'online', usarname: 'person' }
+    assert_redirected_to person_path(assigns(:person))
+    assert_equal 'Person Changed', Person.find(@person.id).name
+  end
 
   test "should destroy person" do
     assert_difference('Person.count', -1) do

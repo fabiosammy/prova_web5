@@ -3,7 +3,7 @@
 one:
   name: MyString
   birthday: 2016-04-28
-  person_id: 
+  person: one 
 
 two:
   name: MyString

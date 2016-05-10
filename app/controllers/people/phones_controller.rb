@@ -23,7 +23,7 @@ class People::PhonesController < ApplicationController
 
     respond_to do |format|
       if @phone.save
-        format.html { redirect_to people_path, notice: 'Phone was successfully created.' }
+        format.html { redirect_to person_phones_path(@person), notice: 'Phone was successfully created.' }
         format.json { render :no_content }
         format.js 
         if (@phone.default) 
