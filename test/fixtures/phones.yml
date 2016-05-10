@@ -3,7 +3,7 @@
 one:
   number: MyString
   default: false
-  person_id: 
+  person: one 
 
 two:
   number: MyString

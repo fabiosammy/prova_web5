@@ -3,7 +3,7 @@
 one:
   tipo: MyString
   valor: MyString
-  friend_id: 
+  friend: one 
 
 two:
   tipo: MyString

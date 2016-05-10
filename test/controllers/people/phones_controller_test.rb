@@ -1,49 +1,49 @@
-# require 'test_helper'
+require 'test_helper'
 
-# class People::PhonesControllerTest < ActionController::TestCase
-#   setup do
-#     @phone = phones(:one)
-#   end
+class People::PhonesControllerTest < ActionController::TestCase
+   setup do
+   @person = people(:one)
+   @phone = phones(:one)
+ end 
 
-#   test "should get index" do
-#     get :index
-#   #   # assert_response :success
-#   #   # assert_not_nil assigns(:phones)
-#   end
+  test "should index phones" do
+    get :index, person_id: @person
+    assert_response :success
+  end
 
-#   # test "should get new" do
-#   #   get :new
-#   #   assert_response :success
-#   # end
+  test "should show phone person" do
+    get :show, person_id: @person, id: @phone 
+    assert_response :success
+  end
 
-#   # test "should create phone" do
-#   #   assert_difference('Phone.count') do
-#   #     post :create, phone: { number: @phone.number, person_id: @phone.person_id }
-#   #   end
+  test "should new phone person" do
+    get :new, person_id: @person
+    assert_response :success
+  end
 
-#   #   assert_redirected_to phone_path(assigns(:phone))
-#   # end
+  test "should create phone of person" do
+    assert_difference('Person.find(@person.id).phones.count') do
+       post :create, phone: {number: '9999887'}, person_id: @person
+    end
+  assert_redirected_to person_phones_path(@person)
+  end
 
-#   # test "should show phone" do
-#   #   get :show, id: @phone
-#   #   assert_response :success
-#   # end
+  test "should edit phone of person" do
+    get :edit, person_id: @person, id: @phone
+    assert_response :success
+  end
 
-#   # test "should get edit" do
-#   #   get :edit, id: @phone
-#   #   assert_response :success
-#   # end
+  test "should update phone of person" do
+    patch :update, person_id: @person, id: @phone, phone: {number: '8855755'}
+    assert_equal '8855755', Phone.find(@phone.id).number
+    assert_redirected_to person_phones_path(@person)
+  end
 
-#   # test "should update phone" do
-#   #   patch :update, id: @phone, phone: { number: @phone.number, person_id: @phone.person_id }
-#   #   assert_redirected_to phone_path(assigns(:phone))
-#   # end
+  test "should destroy phone of person" do
+   assert_difference('Person.find(@person.id).phones.count', -1) do
+      delete :destroy, person_id: @person, id: @phone 
+    end
+    assert_redirected_to person_phones_path(@person)
+  end
 
-#   # test "should destroy phone" do
-#   #   assert_difference('Phone.count', -1) do
-#   #     delete :destroy, id: @phone
-#   #   end
-
-#   #   assert_redirected_to phones_path
-#   # end
-# end
+end
