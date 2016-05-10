@@ -1,0 +1,28 @@
+<%= form_for(@contact,url: action, :html => {:class => "ui form"}) do |f| %>
+  <% if @contact.errors.any? %>
+    <div class="ui red message">
+      <h4><%= pluralize(@contact.errors.count, "error") %> prohibited this person from being saved:</h4>
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type_ %>
+    <%= f.text_field :type_ %>
+  </div>
+
+  <div class="field">
+    <%= f.label :value %>
+    <%= f.text_field :value %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'ui green button'  %>
+    <%= link_to 'Back', person_friend_contacts_path(@person,@friend,@contact), class: "ui button" %>
+  </div>
+
+<% end %>
