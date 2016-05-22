@@ -1,0 +1,21 @@
+<%= form_for([@person, @phone], :html => {:class => 'ui form'}) do |f| %>
+
+<div class="field <% if @person.errors[:number].any? %> error <% end %>">
+  <%= f.label :number %><br>
+  <%= f.text_field :number, :class => "phoneMask" %>
+</div>
+<div class="field <% if @person.errors[:default].any? %> error <% end %>">
+  <%= f.label :default %><br>
+  <%= f.radio_button :default, 'true', :checked => true %>Sim
+  <%= f.radio_button :default, 'false' %>Nao
+</div>
+<div class="ui one column centered grid panel-buttons">
+  <div class="actions ui buttons">
+    <%= link_to 'Back', person_path(@person), :class => "ui button" %>
+    <div class="or"></div>
+    <%= f.submit :class => "ui positive button" %>
+  </div>
+</div>
+
+
+<% end %>

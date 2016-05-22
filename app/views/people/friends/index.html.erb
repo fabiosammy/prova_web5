@@ -1,0 +1,32 @@
+<div class="ui two column grid centered">
+  <div class="column">
+    <div class="ui raised segment">
+    <a class="ui yellow right ribbon label">Listing Friends</a>
+      <div class="column">
+        <%= link_to '<i class="plus icon green"></i>'.html_safe, new_person_friend_path, class: "ui icon button" %>
+        <%= link_to '<i class="reply icon gray"></i>'.html_safe, person_path(@person), class: "ui icon button" %>
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Birthday</th>
+              <th colspan="3">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @friends.each do |friend| %>
+              <tr>
+                <td><%= friend.name %></td>
+                <td><%= friend.birthday %></td>
+                <td><%= link_to '<i class="unhide icon orange"></i>'.html_safe, person_friend_path(@person, friend), class: "ui icon button" %></td>
+                <td><%= link_to '<i class="edit icon blue"></i>'.html_safe, edit_person_friend_path(@person,friend), class: "ui icon button" %></td>
+                <td><%= link_to '<i class="remove icon red"></i>'.html_safe, person_friend_path(@person, friend), method: :delete, data: { confirm: 'Are you sure?' }, class: "ui icon button" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
