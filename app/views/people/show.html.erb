@@ -1,0 +1,64 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular user icon"></i>
+  Pessoa
+</h2>
+
+<%= javascript_include_tag 'application', 'contact' => true %>
+
+<div class="ui small right floated image">
+  <div class="ui mini spaced image">
+    <h5>Status</h5> <%= image_tag "#{@person.status}.png" %>
+  </div>
+</div>
+   
+
+<div class="ui container">
+  <div class="field">
+<table class="ui celled padded table">
+  <thead>
+    <tr>
+      <th class="single line">Name</th>
+      <th>Username</th>
+      <th>Birthday</th>
+      <th>Biografia</th>
+      <th>
+        <div class="header"> 
+          <i class="book icon"></i> Telefones Para Contato 
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <h2 class="ui center aligned header"><%= @person.name %></h2>
+      </td>
+      <td class="single line"><%= @person.username %>
+      </td>
+      <td>
+        <div class="field"> <%= @person.birthday %></div>
+      </td>
+      <td><%= @person.bio %></td>
+      
+      <td>
+        <div class="ui middle aligned divided list">
+          <div class="item">
+          <div class="content">
+            <div id="seuSelect">
+              
+            </div>
+          </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+<i class="phone icon"></i><%= link_to 'Ver Todos Telefones', person_phones_path(@person) %><br><br>
+<i class="users icon"></i><%= link_to 'Ver Todos os Amigos', person_friends_path(@person) %><br><br>
+<%= link_to 'Edit', edit_person_path(@person), class: 'btn ui left attached yellow button' %> 
+<%= link_to 'Back', people_path, class: 'btn ui left attached black button' %>
+</div>
+

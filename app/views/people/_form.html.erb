@@ -1,0 +1,46 @@
+<%= form_for(@person, html:{class: "ui form"}) do |f| %>
+  <% if @person.errors.any? %>
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header"> 
+        
+        <%= pluralize(@person.errors.count, " - Existe erro", " - Existem Erros") %> no seu formulário:</div>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<div class="ui container">
+  <h3>Name</h3>
+  <div class="field">
+   
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.select :status, [['Online', 'online'], ['Busy', 'busy'], ['Offline', 'offline'], ['Hide', 'hide']] %>
+  </div>
+  <div class="field">
+    <h3>Username</h3>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <h3>Aniversário</h3>
+    <%= f.date_select :birthday, {}, { :class => "data" } %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %>
+    <%= f.text_field :bio %>
+  </div>
+  
+  <%= f.submit class: 'btn ui left attached teal button' %> <%= link_to 'Back', people_path, class: 'btn ui right attached red button' %>
+
+
+  </div>
+<% end %>
+
+

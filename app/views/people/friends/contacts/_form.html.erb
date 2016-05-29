@@ -1,0 +1,49 @@
+<%= form_for([@person, @friend, @contact ], html:{class: "ui form"}) do |f| %>
+ <% if @contact.errors.any? %>
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header"> 
+        
+        <%= pluralize(@contact.errors.count, " - Existe erro", " - Existem Erros") %> no seu formulário:</div>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="ui container">
+
+
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th class="single line"> Tipo</th>
+	</tr>
+	<tr>
+		<td>
+			<%= f.select :tipo, [['Email', 'email'], ['Phone', 'phone'], ['Address', 'address']] %>
+      <option value="Email"></option>
+		</td>
+  </tr>
+</table>
+
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th class="single line"> Descrição</th>
+  </tr>
+  <tr>
+    <td>
+      <%= f.text_field :valor %> 
+    </td>
+  </tr>
+
+</table>
+      
+  <%= f.submit class: 'btn ui left attached teal button' %> <%= link_to 'Back', person_friend_contacts_path, class: 'btn ui right attached red button' %>
+	
+<% end %>
+</div>

@@ -1,0 +1,49 @@
+
+<%= form_for([@person, @friend ], html:{class: "ui form"}) do |f| %>
+ <% if @friend.errors.any? %>
+    <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header"> 
+        
+        <%= pluralize(@friend.errors.count, " - Existe erro", " - Existem Erros") %> no seu formulário:</div>
+
+      <ul>
+      <% @friend.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="ui container">
+
+
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th class="single line"> Nome</th>
+	</tr>
+	<tr>
+		<td>
+			<%= f.text_field :name %> 
+		</td>
+  </tr>
+</table>
+
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th class="single line"> Data de Aniversário</th>
+  </tr>
+  <tr>
+    <td>
+      <%= f.text_field :birthday %> 
+    </td>
+  </tr>
+
+</table>
+      
+  <%= f.submit class: 'btn ui left attached teal button' %> <%= link_to 'Back', person_friends_path, class: 'btn ui right attached red button' %>
+	
+<% end %>
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo: MyString
+  valor: MyString
+  friend: one 
+
+two:
+  tipo: MyString
+  valor: MyString
+  friend_id: 

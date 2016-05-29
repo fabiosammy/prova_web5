@@ -1,0 +1,43 @@
+<% if flash[:notice] %> 
+  <p id="notice"></p>
+<%= flash[:notice] %> </div> <% end %>
+
+<div class="ui container">
+  <br>
+  <div class="ui top attached ">
+    <h2 class="ui center aligned icon header">
+      <i class="circular text list icon"></i>
+      Listando Os Contatos de <%= @friend.name %>
+    </h2>
+    <%= link_to new_person_friend_contact_path, class: 'ui btn teal button'  do %>
+      <h3><i class="plus icon"></i> Novo Contato do Amigo</h3>
+    <% end %>
+  </div>
+
+<table class="ui celled table striped">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Valor</th>
+      <th colspan="3">Opções</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.tipo  %></td>
+         <td><%= contact.valor %></td>
+        
+        <td><%= link_to 'Show', person_friend_contact_path(@person, @friend, contact), class: 'ui green button' %></td>
+        <td><%= link_to 'Edit', edit_person_friend_contact_path(@person, @friend, contact), class: 'ui yellow button' %></td>
+        <td><%= link_to 'Destroy', person_friend_contact_path(@person, @friend, contact) ,class: 'ui red button', method: :delete, data: { confirm: 'Are you sure?' }%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Voltar', person_path(@person.id), class: 'ui btn black button' %>
+

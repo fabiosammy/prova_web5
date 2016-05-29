@@ -1,0 +1,26 @@
+<% if flash[:notice] %> 
+  <p id="notice"></p>
+<%= flash[:notice] %> </div> <% end %>
+
+<div class="ui container">
+<table class="ui celled padded table">
+  <thead>
+    <tr>
+      <th class="single line"> Nome</th>
+      <th> Number</th>
+	</tr>
+	<tr>
+		<td>
+			 <%= @person.name %>
+		</td>
+		<td>
+			 <%= @phone.number %>
+		</td>
+	</tr>
+</table>
+	
+
+<%= link_to 'Edit', edit_person_phone_path(@person, @phone), class: 'btn ui left attached yellow button' %> 
+<%= link_to 'Back', person_phones_path(@person), class: 'btn ui left attached black button' %>
+
+</div>

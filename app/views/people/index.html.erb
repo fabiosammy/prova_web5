@@ -1,0 +1,54 @@
+<% if flash[:notice] %> 
+  <p id="notice"></p>
+<%= flash[:notice] %> </div> <% end %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+<div class="ui container">
+  <br>
+<div class="ui top attached ">
+<h2 class="ui center aligned icon header">
+  <i class="circular users icon"></i>
+  Pessoas
+</h2>
+<%= link_to new_person_path, class: 'ui btn teal button'  do %>
+  <h1><i class="plus icon"></i> Adicionar Pessoa</h1>
+<% end %>
+</div>
+
+<table class="ui celled table striped">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Birthday</th>
+      <th>Bio</th>
+      <th colspan="3">Options</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr id="people_<%=person.id%>">
+        <td class="ui aligned mini image">
+          <%= image_tag "#{person.status}.png" %>
+        </td>
+        <td><%= person.name %></td>
+        <td><%= person.username %></td>
+        <td><%= person.birthday %></td>
+        <td><%= person.bio %></td>
+        <td> <%= link_to 'Show', person, class: 'ui green button'%></td>
+        <td><%= link_to 'Edit', edit_person_path(person), class: 'ui yellow button' %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
+
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+ 
+<div class="ui modal">
+</div>
+</div>
